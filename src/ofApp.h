@@ -22,7 +22,11 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-    GUI gui = GUI(); 
+    GUI gui = GUI();
+    
+    // Rendering stuff
+    ofEasyCam   cam;
+    ofLight     light;
     
     private:
         void setupGui();
