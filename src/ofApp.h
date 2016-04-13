@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "GUI.hpp"
+#include "Voronoi.hpp"
 
 class ofApp : public ofBaseApp{
 
@@ -23,10 +24,9 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
     
     GUI gui = GUI();
+    Voronoi voronoi = Voronoi();
     
-    // Rendering stuff
-    ofEasyCam   cam;
-    ofLight     light;
+
     
     private:
         void setupGui();

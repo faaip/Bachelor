@@ -10,5 +10,25 @@
 #define Voronoi_hpp
 
 #include <stdio.h>
+#include "ofMain.h"
+#include "ofxVoro.h"
+
+class Voronoi{
+public:
+    Voronoi();
+    void update();
+    void draw();
+    void setup();
+    void createNew();
+        
+    // Rendering stuff
+    ofEasyCam   cam;
+    ofLight     light;
+    
+    vector<ofPoint> cellCentroids;
+    vector<float>   cellRadius;
+    vector<ofVboMesh>  cellMeshes;
+    vector<ofVboMesh>  cellMeshWireframes;
+};
 
 #endif /* Voronoi_hpp */

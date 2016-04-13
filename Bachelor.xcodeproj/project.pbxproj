@@ -11,6 +11,18 @@
 		BB0329561CBE93D700287F29 /* GUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB0329541CBE93D700287F29 /* GUI.cpp */; };
 		BB03295A1CBE96F100287F29 /* Genome.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB0329581CBE96F100287F29 /* Genome.cpp */; };
 		BB03295D1CBE970E00287F29 /* EvolutionaryAlgorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB03295B1CBE970E00287F29 /* EvolutionaryAlgorithm.cpp */; };
+		BB723D3B1CBEE0A800FEFE9E /* Voronoi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB723D391CBEE0A800FEFE9E /* Voronoi.cpp */; };
+		BB723D5A1CBEE1F000FEFE9E /* ofxVoro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB723D3E1CBEE1F000FEFE9E /* ofxVoro.cpp */; };
+		BB723D5B1CBEE1F000FEFE9E /* c_loops.cc in Sources */ = {isa = PBXBuildFile; fileRef = BB723D421CBEE1F000FEFE9E /* c_loops.cc */; };
+		BB723D5C1CBEE1F000FEFE9E /* cell.cc in Sources */ = {isa = PBXBuildFile; fileRef = BB723D441CBEE1F000FEFE9E /* cell.cc */; };
+		BB723D5D1CBEE1F000FEFE9E /* common.cc in Sources */ = {isa = PBXBuildFile; fileRef = BB723D461CBEE1F000FEFE9E /* common.cc */; };
+		BB723D5E1CBEE1F000FEFE9E /* container.cc in Sources */ = {isa = PBXBuildFile; fileRef = BB723D491CBEE1F000FEFE9E /* container.cc */; };
+		BB723D5F1CBEE1F000FEFE9E /* container_prd.cc in Sources */ = {isa = PBXBuildFile; fileRef = BB723D4B1CBEE1F000FEFE9E /* container_prd.cc */; };
+		BB723D601CBEE1F000FEFE9E /* pre_container.cc in Sources */ = {isa = PBXBuildFile; fileRef = BB723D4D1CBEE1F000FEFE9E /* pre_container.cc */; };
+		BB723D611CBEE1F000FEFE9E /* unitcell.cc in Sources */ = {isa = PBXBuildFile; fileRef = BB723D501CBEE1F000FEFE9E /* unitcell.cc */; };
+		BB723D621CBEE1F000FEFE9E /* v_base.cc in Sources */ = {isa = PBXBuildFile; fileRef = BB723D521CBEE1F000FEFE9E /* v_base.cc */; };
+		BB723D631CBEE1F000FEFE9E /* v_compute.cc in Sources */ = {isa = PBXBuildFile; fileRef = BB723D541CBEE1F000FEFE9E /* v_compute.cc */; };
+		BB723D641CBEE1F000FEFE9E /* wall.cc in Sources */ = {isa = PBXBuildFile; fileRef = BB723D571CBEE1F000FEFE9E /* wall.cc */; };
 		C9466C434D1CF8AB968D298D /* ofxDatGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26490D7CC31EF7D6ED5F925A /* ofxDatGui.cpp */; };
 		D3C1C48E59CAA2D68C0DD477 /* ofxDatGuiComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A3E3B8F332A1A3C7EDF4998 /* ofxDatGuiComponent.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -69,6 +81,34 @@
 		BB0329591CBE96F100287F29 /* Genome.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Genome.hpp; sourceTree = "<group>"; };
 		BB03295B1CBE970E00287F29 /* EvolutionaryAlgorithm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EvolutionaryAlgorithm.cpp; sourceTree = "<group>"; };
 		BB03295C1CBE970E00287F29 /* EvolutionaryAlgorithm.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EvolutionaryAlgorithm.hpp; sourceTree = "<group>"; };
+		BB723D391CBEE0A800FEFE9E /* Voronoi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Voronoi.cpp; sourceTree = "<group>"; };
+		BB723D3A1CBEE0A800FEFE9E /* Voronoi.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Voronoi.hpp; sourceTree = "<group>"; };
+		BB723D3E1CBEE1F000FEFE9E /* ofxVoro.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxVoro.cpp; sourceTree = "<group>"; };
+		BB723D3F1CBEE1F000FEFE9E /* ofxVoro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxVoro.h; sourceTree = "<group>"; };
+		BB723D421CBEE1F000FEFE9E /* c_loops.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = c_loops.cc; sourceTree = "<group>"; };
+		BB723D431CBEE1F000FEFE9E /* c_loops.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = c_loops.hh; sourceTree = "<group>"; };
+		BB723D441CBEE1F000FEFE9E /* cell.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cell.cc; sourceTree = "<group>"; };
+		BB723D451CBEE1F000FEFE9E /* cell.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = cell.hh; sourceTree = "<group>"; };
+		BB723D461CBEE1F000FEFE9E /* common.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = common.cc; sourceTree = "<group>"; };
+		BB723D471CBEE1F000FEFE9E /* common.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = common.hh; sourceTree = "<group>"; };
+		BB723D481CBEE1F000FEFE9E /* config.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = config.hh; sourceTree = "<group>"; };
+		BB723D491CBEE1F000FEFE9E /* container.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = container.cc; sourceTree = "<group>"; };
+		BB723D4A1CBEE1F000FEFE9E /* container.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = container.hh; sourceTree = "<group>"; };
+		BB723D4B1CBEE1F000FEFE9E /* container_prd.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = container_prd.cc; sourceTree = "<group>"; };
+		BB723D4C1CBEE1F000FEFE9E /* container_prd.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = container_prd.hh; sourceTree = "<group>"; };
+		BB723D4D1CBEE1F000FEFE9E /* pre_container.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pre_container.cc; sourceTree = "<group>"; };
+		BB723D4E1CBEE1F000FEFE9E /* pre_container.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = pre_container.hh; sourceTree = "<group>"; };
+		BB723D4F1CBEE1F000FEFE9E /* rad_option.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = rad_option.hh; sourceTree = "<group>"; };
+		BB723D501CBEE1F000FEFE9E /* unitcell.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = unitcell.cc; sourceTree = "<group>"; };
+		BB723D511CBEE1F000FEFE9E /* unitcell.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = unitcell.hh; sourceTree = "<group>"; };
+		BB723D521CBEE1F000FEFE9E /* v_base.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = v_base.cc; sourceTree = "<group>"; };
+		BB723D531CBEE1F000FEFE9E /* v_base.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = v_base.hh; sourceTree = "<group>"; };
+		BB723D541CBEE1F000FEFE9E /* v_compute.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = v_compute.cc; sourceTree = "<group>"; };
+		BB723D551CBEE1F000FEFE9E /* v_compute.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = v_compute.hh; sourceTree = "<group>"; };
+		BB723D561CBEE1F000FEFE9E /* voro++.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "voro++.hh"; sourceTree = "<group>"; };
+		BB723D571CBEE1F000FEFE9E /* wall.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = wall.cc; sourceTree = "<group>"; };
+		BB723D581CBEE1F000FEFE9E /* wall.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = wall.hh; sourceTree = "<group>"; };
+		BB723D591CBEE1F000FEFE9E /* worklist.hh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = worklist.hh; sourceTree = "<group>"; };
 		BCC84C6EB3417706F4F762F0 /* ofxDatGuiComponent.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDatGuiComponent.h; path = ../../../addons/ofxDatGui/src/core/ofxDatGuiComponent.h; sourceTree = SOURCE_ROOT; };
 		C085A33340AB0C1DB647AC2F /* ofxDatGuiTextInput.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDatGuiTextInput.h; path = ../../../addons/ofxDatGui/src/components/ofxDatGuiTextInput.h; sourceTree = SOURCE_ROOT; };
 		C84ED7FCC017328C6F58283D /* ofxDatGuiColorPicker.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDatGuiColorPicker.h; path = ../../../addons/ofxDatGui/src/components/ofxDatGuiColorPicker.h; sourceTree = SOURCE_ROOT; };
@@ -179,6 +219,8 @@
 		BB03295E1CBE972A00287F29 /* Voronoi */ = {
 			isa = PBXGroup;
 			children = (
+				BB723D391CBEE0A800FEFE9E /* Voronoi.cpp */,
+				BB723D3A1CBEE0A800FEFE9E /* Voronoi.hpp */,
 			);
 			name = Voronoi;
 			sourceTree = "<group>";
@@ -187,8 +229,68 @@
 			isa = PBXGroup;
 			children = (
 				D8DD1043C333F6F63C8685E6 /* ofxDatGui */,
+				BB723D3C1CBEE1F000FEFE9E /* ofxVoro */,
 			);
 			name = addons;
+			sourceTree = "<group>";
+		};
+		BB723D3C1CBEE1F000FEFE9E /* ofxVoro */ = {
+			isa = PBXGroup;
+			children = (
+				BB723D3D1CBEE1F000FEFE9E /* src */,
+				BB723D401CBEE1F000FEFE9E /* libs */,
+			);
+			name = ofxVoro;
+			sourceTree = "<group>";
+		};
+		BB723D3D1CBEE1F000FEFE9E /* src */ = {
+			isa = PBXGroup;
+			children = (
+				BB723D3E1CBEE1F000FEFE9E /* ofxVoro.cpp */,
+				BB723D3F1CBEE1F000FEFE9E /* ofxVoro.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxVoro/src;
+			sourceTree = "<group>";
+		};
+		BB723D401CBEE1F000FEFE9E /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				BB723D411CBEE1F000FEFE9E /* voro++ */,
+			);
+			name = libs;
+			path = ../../../addons/ofxVoro/libs;
+			sourceTree = "<group>";
+		};
+		BB723D411CBEE1F000FEFE9E /* voro++ */ = {
+			isa = PBXGroup;
+			children = (
+				BB723D421CBEE1F000FEFE9E /* c_loops.cc */,
+				BB723D431CBEE1F000FEFE9E /* c_loops.hh */,
+				BB723D441CBEE1F000FEFE9E /* cell.cc */,
+				BB723D451CBEE1F000FEFE9E /* cell.hh */,
+				BB723D461CBEE1F000FEFE9E /* common.cc */,
+				BB723D471CBEE1F000FEFE9E /* common.hh */,
+				BB723D481CBEE1F000FEFE9E /* config.hh */,
+				BB723D491CBEE1F000FEFE9E /* container.cc */,
+				BB723D4A1CBEE1F000FEFE9E /* container.hh */,
+				BB723D4B1CBEE1F000FEFE9E /* container_prd.cc */,
+				BB723D4C1CBEE1F000FEFE9E /* container_prd.hh */,
+				BB723D4D1CBEE1F000FEFE9E /* pre_container.cc */,
+				BB723D4E1CBEE1F000FEFE9E /* pre_container.hh */,
+				BB723D4F1CBEE1F000FEFE9E /* rad_option.hh */,
+				BB723D501CBEE1F000FEFE9E /* unitcell.cc */,
+				BB723D511CBEE1F000FEFE9E /* unitcell.hh */,
+				BB723D521CBEE1F000FEFE9E /* v_base.cc */,
+				BB723D531CBEE1F000FEFE9E /* v_base.hh */,
+				BB723D541CBEE1F000FEFE9E /* v_compute.cc */,
+				BB723D551CBEE1F000FEFE9E /* v_compute.hh */,
+				BB723D561CBEE1F000FEFE9E /* voro++.hh */,
+				BB723D571CBEE1F000FEFE9E /* wall.cc */,
+				BB723D581CBEE1F000FEFE9E /* wall.hh */,
+				BB723D591CBEE1F000FEFE9E /* worklist.hh */,
+			);
+			path = "voro++";
 			sourceTree = "<group>";
 		};
 		D8DD1043C333F6F63C8685E6 /* ofxDatGui */ = {
@@ -343,13 +445,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB723D5B1CBEE1F000FEFE9E /* c_loops.cc in Sources */,
+				BB723D611CBEE1F000FEFE9E /* unitcell.cc in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				BB723D5F1CBEE1F000FEFE9E /* container_prd.cc in Sources */,
+				BB723D5C1CBEE1F000FEFE9E /* cell.cc in Sources */,
 				BB03295D1CBE970E00287F29 /* EvolutionaryAlgorithm.cpp in Sources */,
+				BB723D641CBEE1F000FEFE9E /* wall.cc in Sources */,
+				BB723D5E1CBEE1F000FEFE9E /* container.cc in Sources */,
+				BB723D5D1CBEE1F000FEFE9E /* common.cc in Sources */,
+				BB723D5A1CBEE1F000FEFE9E /* ofxVoro.cpp in Sources */,
 				D3C1C48E59CAA2D68C0DD477 /* ofxDatGuiComponent.cpp in Sources */,
 				BB0329561CBE93D700287F29 /* GUI.cpp in Sources */,
 				9CF4130A7E6DA19A3DC42B9A /* ofxSmartFont.cpp in Sources */,
+				BB723D631CBEE1F000FEFE9E /* v_compute.cc in Sources */,
+				BB723D621CBEE1F000FEFE9E /* v_base.cc in Sources */,
 				C9466C434D1CF8AB968D298D /* ofxDatGui.cpp in Sources */,
+				BB723D601CBEE1F000FEFE9E /* pre_container.cc in Sources */,
+				BB723D3B1CBEE0A800FEFE9E /* Voronoi.cpp in Sources */,
 				BB03295A1CBE96F100287F29 /* Genome.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,6 +584,7 @@
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -502,6 +617,7 @@
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 				baseConfigurationReference = E4EB6923138AFD0F00A09F29;
 			};

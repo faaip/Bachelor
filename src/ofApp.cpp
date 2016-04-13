@@ -2,12 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    ofEnableAlphaBlending();
-    ofSetVerticalSync(true);
-    ofEnableSmoothing();
-    
-    light.setPosition(100,500, 100);
-    cam.setAutoDistance(true);
+    voronoi.createNew();
 }
 
 //--------------------------------------------------------------
@@ -17,16 +12,14 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofBackgroundGradient(ofColor(255), ofColor(170), OF_GRADIENT_CIRCULAR);
+    voronoi.draw();
 }
 
-//--------------------------------------------------------------
-void ofApp::setupGui(){
 
-}
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+    voronoi.createNew();
 
 }
 
@@ -37,6 +30,7 @@ void ofApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
+    
 
 }
 
