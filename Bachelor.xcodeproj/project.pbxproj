@@ -205,26 +205,6 @@
 			name = components;
 			sourceTree = "<group>";
 		};
-		BB0329571CBE96DF00287F29 /* Genetic */ = {
-			isa = PBXGroup;
-			children = (
-				BB0329581CBE96F100287F29 /* Genome.cpp */,
-				BB0329591CBE96F100287F29 /* Genome.hpp */,
-				BB03295B1CBE970E00287F29 /* EvolutionaryAlgorithm.cpp */,
-				BB03295C1CBE970E00287F29 /* EvolutionaryAlgorithm.hpp */,
-			);
-			name = Genetic;
-			sourceTree = "<group>";
-		};
-		BB03295E1CBE972A00287F29 /* Voronoi */ = {
-			isa = PBXGroup;
-			children = (
-				BB723D391CBEE0A800FEFE9E /* Voronoi.cpp */,
-				BB723D3A1CBEE0A800FEFE9E /* Voronoi.hpp */,
-			);
-			name = Voronoi;
-			sourceTree = "<group>";
-		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,8 +305,12 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				BB03295E1CBE972A00287F29 /* Voronoi */,
-				BB0329571CBE96DF00287F29 /* Genetic */,
+				BB723D391CBEE0A800FEFE9E /* Voronoi.cpp */,
+				BB723D3A1CBEE0A800FEFE9E /* Voronoi.hpp */,
+				BB0329581CBE96F100287F29 /* Genome.cpp */,
+				BB0329591CBE96F100287F29 /* Genome.hpp */,
+				BB03295B1CBE970E00287F29 /* EvolutionaryAlgorithm.cpp */,
+				BB03295C1CBE970E00287F29 /* EvolutionaryAlgorithm.hpp */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,

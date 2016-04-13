@@ -46,7 +46,7 @@ void Voronoi::draw(){
     
     // Draw tessellation
     for(int i = 0; i < cellMeshes.size(); i++){
-        ofSetColor(100,30);
+        ofSetColor(ofRandom(255),ofRandom(255),ofRandom(255));
         cellMeshes[i].drawFaces();
         
         ofPushStyle();
