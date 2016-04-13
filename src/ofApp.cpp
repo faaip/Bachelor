@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    setupGui();
+    
 }
 
 //--------------------------------------------------------------
@@ -17,22 +17,8 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::setupGui(){
-    ofxDatGui* gui = new ofxDatGui( ofxDatGuiAnchor::TOP_LEFT );
-    vector<string> mutations = {"Bit string mutation", "Flip Bit", "Boundary"};
-    vector<string> crossover = {"Single point", "Two point", "Uniform", "Arithmetic"};
-    
-    ofxDatGuiDropdown* mutationsDropdown;
-    ofxDatGuiDropdown* crossoverDropdown;
-    ofxDatGuiSlider* populationSizeSlider;
-    
-    populationSizeSlider = gui->addSlider("Population size", 10, 100);
-    populationSizeSlider->setPrecision(0);
-    populationSizeSlider->setValue(50);
-    mutationsDropdown = gui->addDropdown("Mutations", mutations);
-    crossoverDropdown = gui->addDropdown("Crossover", crossover);
-    
-    gui->addButton("Start!");
-}
+
+    }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){

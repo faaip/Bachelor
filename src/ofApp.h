@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxDatGui.h"
+#include "GUI.hpp"
 
 class ofApp : public ofBaseApp{
 
@@ -22,7 +22,8 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-private:
-    void setupGui();
-		
+    GUI gui = GUI(); 
+    
+    private:
+        void setupGui();
 };
