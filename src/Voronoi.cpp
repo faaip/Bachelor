@@ -86,16 +86,18 @@ void Voronoi::createNew(){
                         true,true,true,
                         8);
     
-    //  Add walls (un comment one pair if you like to shape the container)
-    //
-    voro::wall_cylinder cyl(0,0,0,0,0,20, min(_width*0.5, _height*0.5));
-    con.add_wall(cyl);
-    
-    //    voro::wall_sphere sph(0, 0, 0, min(_width*0.5, _height*0.5) );
-    //    con.add_wall(sph);
-    
-    voro::wall_cone cone(0,0,min(_width*0.5, _height*0.5),0,0,-1,atan(0.5));
-    con.add_wall(cone);
+
+    // Add walls depending on choice in GUI
+    if(tessellationType == 0){
+        voro::wall_cylinder cyl(0,0,0,0,0,20, min(_width*0.5, _height*0.5));
+        con.add_wall(cyl);
+    }else if (tessellationType == 1){
+        voro::wall_sphere sph(0, 0, 0, min(_width*0.5, _height*0.5) );
+        con.add_wall(sph);
+    }else if (tessellationType == 2){
+        voro::wall_cone cone(0,0,min(_width*0.5, _height*0.5),0,0,-1,atan(0.5));
+        con.add_wall(cone);
+    }
     
     //  Add the cell seed to the container
     //
@@ -111,5 +113,4 @@ void Voronoi::createNew(){
     cellMeshWireframes = getCellsFromContainer(con,0.0,true);
     cellRadius = getCellsRadius(con);
     cellCentroids = getCellsCentroids(con);
-    
 }

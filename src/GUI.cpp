@@ -11,11 +11,14 @@
 GUI::GUI(){
     vector<string> crossover = {"Single point crossover", "Two point crossover", "Uniform crossover", "Arithmetic crossover"};
     vector<string> mutations = {"Bit string mutation", "Boundary", "Non-Uniform", "Uniform", "Gaussian"};
-        vector<string> fitnessFunctionChoices = {"1","2","3"};
+    vector<string> fitnessFunctionChoices = {"1","2","3"};
+    vector<string> tessellationTypes = {"Cylinder","Sphere","Cone"};
 
+    
     // Add stuff to gui
     gui = new ofxDatGui( ofxDatGuiAnchor::TOP_LEFT );
     gui->addHeader(" ::: Evolutionary Voronoi Tessellation :::"); // Header
+    tessellationTypeDropdown = gui->addDropdown("Tessellation types", tessellationTypes);
     populationSizeSlider = gui->addSlider("Population size", 10, 250);
     mutationDropdown = gui->addDropdown("Mutation", mutations);
     crossoverDropdown = gui->addDropdown("Crossover", crossover);
@@ -30,9 +33,10 @@ GUI::GUI(){
     gui->addFooter(); // Footer for collapsing
     
     // Add event listeners
-    startButton->onButtonEvent(this, &GUI::onButtonEvent);
+    tessellationTypeDropdown->onDropdownEvent(this, &GUI::onDropdownEvent);
     showCenterPointsToggle->onButtonEvent(this, &GUI::onButtonEvent);
     showTessellationMeshToggle->onButtonEvent(this, &GUI::onButtonEvent);
+    startButton->onButtonEvent(this, &GUI::onButtonEvent);
 }
 
 void GUI::setup(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlgorithm){
@@ -52,14 +56,23 @@ void GUI::onButtonEvent(ofxDatGuiButtonEvent e){
     
     if(e.target == showCenterPointsToggle){
         voronoi->isShowingPoints = showCenterPointsToggle->getEnabled();
-     }
+    }
     
     if(e.target == showTessellationMeshToggle){
         voronoi->isShowingMesh = showTessellationMeshToggle->getEnabled();
-
+        
     }
     
 }
+
+void GUI::onDropdownEvent(ofxDatGuiDropdownEvent e){
+    if(e.target == tessellationTypeDropdown){
+        voronoi->tessellationType = e.child;
+    }
+    
+}
+
+
 
 
 void GUI::onSliderEvent(ofxDatGuiSliderEvent e){

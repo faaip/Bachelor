@@ -32,6 +32,8 @@ public:
     
     bool isShowingPoints = true;
     bool isShowingMesh = true;
+    
+    int tessellationType = 0;
 };
 
 #endif /* Voronoi_hpp */

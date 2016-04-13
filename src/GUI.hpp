@@ -24,9 +24,11 @@ public:
     // Event listeners
     void onButtonEvent(ofxDatGuiButtonEvent e);
     void onSliderEvent(ofxDatGuiSliderEvent e);
+    void onDropdownEvent(ofxDatGuiDropdownEvent e);
 
     // GUI Elements
     ofxDatGui* gui; // GUI Element
+    ofxDatGuiDropdown* tessellationTypeDropdown;
     ofxDatGuiSlider* populationSizeSlider;
     ofxDatGuiDropdown* mutationDropdown;
     ofxDatGuiDropdown* crossoverDropdown;

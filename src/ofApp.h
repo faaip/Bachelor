@@ -28,8 +28,4 @@ class ofApp : public ofBaseApp{
     Voronoi voronoi = Voronoi();
     EvolutionaryAlgorithm evolutionaryAlgorithm = EvolutionaryAlgorithm();
     
-
-    
-    private:
-        void setupGui();
 };
