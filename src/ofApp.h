@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "GUI.hpp"
 #include "Voronoi.hpp"
+#include "EvolutionaryAlgorithm.hpp"
 
 class ofApp : public ofBaseApp{
 
@@ -25,6 +26,7 @@ class ofApp : public ofBaseApp{
     
     GUI gui = GUI();
     Voronoi voronoi = Voronoi();
+    EvolutionaryAlgorithm evolutionaryAlgorithm = EvolutionaryAlgorithm();
     
 
     

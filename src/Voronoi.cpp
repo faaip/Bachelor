@@ -10,7 +10,7 @@
 
 #define _width 820
 #define _height 615
-#define _deep 150
+#define _deep 35
 #define _nCells 60 // Number of cells
 
 Voronoi::Voronoi(){
@@ -37,25 +37,28 @@ void Voronoi::draw(){
     glEnable(GL_DEPTH_TEST);
     
     // Draw center spheres
-//    for (int i = 0; i < cellCentroids.size(); i++){
-//        ofSetColor(0);
-//        ofSphere(cellCentroids[i], cellRadius[i]*0.15);
-//        ofSetColor(255);
-//        ofDrawBitmapString(ofToString(cellRadius[i]), 15+cellCentroids[i].x, cellCentroids[i].y);
-//    }
+    if(isShowingPoints){
+    for (int i = 0; i < cellCentroids.size(); i++){
+        ofSetColor(0);
+        ofSphere(cellCentroids[i], cellRadius[i]*0.15);
+        ofSetColor(255);
+        ofDrawBitmapString(ofToString(cellRadius[i]), 15+cellCentroids[i].x, cellCentroids[i].y);
+    }
+    }
     
     // Draw tessellation
+    if(isShowingMesh) {
     for(int i = 0; i < cellMeshes.size(); i++){
-        ofSetColor(ofRandom(255),ofRandom(255),ofRandom(255));
+        ofSetColor(100,30);
         cellMeshes[i].drawFaces();
+        
         
         ofPushStyle();
         ofSetLineWidth(3);
         ofSetColor(255);
         cellMeshWireframes[i].draw();
         ofPopStyle();
-        
-        
+    }
     }
     
     glDisable(GL_DEPTH_TEST);

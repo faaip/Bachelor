@@ -2,6 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    gui.setup(&voronoi,&evolutionaryAlgorithm);
     voronoi.createNew();
 }
 

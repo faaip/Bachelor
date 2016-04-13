@@ -11,12 +11,15 @@
 
 #include <stdio.h>
 #include "ofMain.h"
+#include "Voronoi.hpp"
+#include "EvolutionaryAlgorithm.hpp"
 #include "ofxDatGui.h"
 
 class GUI{
 public:
     // Methods
     GUI();
+    void setup(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlgorithm);
 
     // Event listeners
     void onButtonEvent(ofxDatGuiButtonEvent e);
@@ -35,12 +38,11 @@ public:
     ofxDatGuiLabel* currentGenerationNumberLabel;
     ofxDatGuiButton* startButton;
 
-
-    
-
-    
     // Variables
-
+    class Voronoi* voronoi; // Voronoi pointer
+    EvolutionaryAlgorithm* evolutionaryAlgorithm; // Pointer to evolutionary algorithm
+    
+    
 };
 
 #endif /* GUI_hpp */

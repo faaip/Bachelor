@@ -31,8 +31,18 @@ GUI::GUI(){
     
     // Add event listeners
     startButton->onButtonEvent(this, &GUI::onButtonEvent);
+    showCenterPointsToggle->onButtonEvent(this, &GUI::onButtonEvent);
+    showTessellationMeshToggle->onButtonEvent(this, &GUI::onButtonEvent);
 }
 
+void GUI::setup(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlgorithm){
+    this->voronoi = voronoi;
+    this->evolutionaryAlgorithm = evolutionaryAlgorithm;
+    
+    // Set initial values
+    showCenterPointsToggle->setEnabled(voronoi->isShowingPoints);
+    showTessellationMeshToggle->setEnabled(voronoi->isShowingMesh);
+}
 
 
 void GUI::onButtonEvent(ofxDatGuiButtonEvent e){
@@ -40,6 +50,14 @@ void GUI::onButtonEvent(ofxDatGuiButtonEvent e){
         cout << "Start button pressed" << endl;
     }
     
+    if(e.target == showCenterPointsToggle){
+        voronoi->isShowingPoints = showCenterPointsToggle->getEnabled();
+     }
+    
+    if(e.target == showTessellationMeshToggle){
+        voronoi->isShowingMesh = showTessellationMeshToggle->getEnabled();
+
+    }
     
 }
 

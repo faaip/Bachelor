@@ -29,6 +29,9 @@ public:
     vector<float>   cellRadius;
     vector<ofVboMesh>  cellMeshes;
     vector<ofVboMesh>  cellMeshWireframes;
+    
+    bool isShowingPoints = true;
+    bool isShowingMesh = true;
 };
 
 #endif /* Voronoi_hpp */

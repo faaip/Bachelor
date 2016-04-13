@@ -10,5 +10,10 @@
 #define EvolutionaryAlgorithm_hpp
 
 #include <stdio.h>
+#include "ofMain.h"
+
+class EvolutionaryAlgorithm{
+    
+};
 
 #endif /* EvolutionaryAlgorithm_hpp */
