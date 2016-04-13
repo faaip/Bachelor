@@ -29,7 +29,7 @@ void Voronoi::update(){
 
 void Voronoi::draw(){
     ofBackgroundGradient(ofColor(255), ofColor(170), OF_GRADIENT_CIRCULAR);
-
+    
     ofPushMatrix();
     cam.begin();
     light.enable();
@@ -38,27 +38,27 @@ void Voronoi::draw(){
     
     // Draw center spheres
     if(isShowingPoints){
-    for (int i = 0; i < cellCentroids.size(); i++){
-        ofSetColor(0);
-        ofSphere(cellCentroids[i], cellRadius[i]*0.15);
-        ofSetColor(255);
-        ofDrawBitmapString(ofToString(cellRadius[i]), 15+cellCentroids[i].x, cellCentroids[i].y);
-    }
+        for (int i = 0; i < cellCentroids.size(); i++){
+            ofSetColor(0);
+            ofSphere(cellCentroids[i], cellRadius[i]*0.15);
+            ofSetColor(255);
+            ofDrawBitmapString(ofToString(cellRadius[i]), 15+cellCentroids[i].x, cellCentroids[i].y);
+        }
     }
     
     // Draw tessellation
     if(isShowingMesh) {
-    for(int i = 0; i < cellMeshes.size(); i++){
-        ofSetColor(100,30);
-        cellMeshes[i].drawFaces();
-        
-        
-        ofPushStyle();
-        ofSetLineWidth(3);
-        ofSetColor(255);
-        cellMeshWireframes[i].draw();
-        ofPopStyle();
-    }
+        for(int i = 0; i < cellMeshes.size(); i++){
+            ofSetColor(100,30);
+            cellMeshes[i].drawFaces();
+            
+            
+            ofPushStyle();
+            ofSetLineWidth(3);
+            ofSetColor(255);
+            cellMeshWireframes[i].draw();
+            ofPopStyle();
+        }
     }
     
     glDisable(GL_DEPTH_TEST);
@@ -86,7 +86,7 @@ void Voronoi::createNew(){
                         true,true,true,
                         8);
     
-
+    
     // Add walls depending on choice in GUI
     if(tessellationType == 0){
         voro::wall_cylinder cyl(0,0,0,0,0,20, min(_width*0.5, _height*0.5));
@@ -100,7 +100,6 @@ void Voronoi::createNew(){
     }
     
     //  Add the cell seed to the container
-    //
     for(int i = 0; i < _nCells;i++){
         ofPoint newCell = ofPoint(ofRandom(-_width*0.5,_width*0.5),
                                   ofRandom(-_height*0.5,_height*0.5),
