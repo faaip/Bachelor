@@ -10,5 +10,21 @@
 #define Genome_hpp
 
 #include <stdio.h>
+#include "ofMain.h"
+
+class Genome{
+public:
+    // Methods
+    Genome();
+    void randomizeChromosome();
+    Genome reproduce(Genome otherParent);
+    void mutate();
+    
+    // Variables
+    int fitness;
+    vector<ofPoint> chromosome;
+    
+    
+};
 
 #endif /* Genome_hpp */

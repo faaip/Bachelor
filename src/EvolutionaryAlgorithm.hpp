@@ -11,9 +11,19 @@
 
 #include <stdio.h>
 #include "ofMain.h"
+#include "Genome.hpp"
 
 class EvolutionaryAlgorithm{
+public:
+    // Methods
+    EvolutionaryAlgorithm();
+    void initializePopulation();
+    void evaluatePopulation();
+    void produceNextGeneration();
     
+    // Variables
+    int populationSize;
+    vector<Genome> population;
 };
 
 #endif /* EvolutionaryAlgorithm_hpp */

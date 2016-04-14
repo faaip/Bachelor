@@ -39,7 +39,6 @@ void Voronoi::draw(){
     // Draw center spheres
     if(isShowingPoints){
         for (int i = 0; i < cellCentroids.size(); i++){
-            ofSetColor(0);
             ofSphere(cellCentroids[i], cellRadius[i]*0.15);
             ofSetColor(255);
             ofDrawBitmapString(ofToString(cellRadius[i]), 15+cellCentroids[i].x, cellCentroids[i].y);
@@ -69,10 +68,7 @@ void Voronoi::draw(){
 }
 
 void Voronoi::createNew(){
-    
-    
     //  Fresh begining
-    //
     cellMeshes.clear();
     cellCentroids.clear();
     cellRadius.clear();

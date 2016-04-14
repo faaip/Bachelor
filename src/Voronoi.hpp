@@ -19,7 +19,7 @@ public:
     void update();
     void draw();
     void setup();
-    void createNew();
+    void createPhenotype();
         
     // Rendering stuff
     ofEasyCam   cam;
