@@ -20,6 +20,9 @@ public:
     void initializePopulation();
     void evaluatePopulation();
     void produceNextGeneration();
+    void calculateFitness(Genome g);
+    bool hasHigherFitness(Genome x, Genome y);
+    
     
     // Variables
     int populationSize;

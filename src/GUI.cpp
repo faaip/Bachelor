@@ -37,6 +37,9 @@ GUI::GUI(){
     showCenterPointsToggle->onButtonEvent(this, &GUI::onButtonEvent);
     showTessellationMeshToggle->onButtonEvent(this, &GUI::onButtonEvent);
     startButton->onButtonEvent(this, &GUI::onButtonEvent);
+    populationSizeSlider->onSliderEvent(this, &GUI::onSliderEvent);
+    
+
 }
 
 void GUI::setup(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlgorithm){
@@ -46,6 +49,7 @@ void GUI::setup(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlgorithm){
     // Set initial values
     showCenterPointsToggle->setEnabled(voronoi->isShowingPoints);
     showTessellationMeshToggle->setEnabled(voronoi->isShowingMesh);
+    populationSizeSlider->setValue(this->evolutionaryAlgorithm->populationSize);
 }
 
 
@@ -76,5 +80,10 @@ void GUI::onDropdownEvent(ofxDatGuiDropdownEvent e){
 
 
 void GUI::onSliderEvent(ofxDatGuiSliderEvent e){
+    if(e.target == populationSizeSlider){
+        evolutionaryAlgorithm->populationSize = (int) e.value;
+        cout << e.value << endl;
+    }
+    
     
 }

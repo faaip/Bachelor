@@ -9,8 +9,6 @@
 #include "Genome.hpp"
 
 Genome::Genome(){
-    // Randomize at first
-    randomizeChromosome();
     
 }
 

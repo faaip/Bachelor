@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "Defines.h"
+#include "Genome.hpp"
 #include "ofMain.h"
 
 class Genome{
@@ -22,9 +23,14 @@ public:
     void mutate();
     
     // Variables
-    int fitness;
+    float fitness;
     vector<ofPoint> chromosome;
-    
+  
+    // Overload < operator
+    bool operator<(const Genome& b)
+    {
+        return this->fitness < b.fitness;
+    }
     
 };
 
