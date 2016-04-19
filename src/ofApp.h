@@ -4,6 +4,7 @@
 #include "GUI.hpp"
 #include "Voronoi.hpp"
 #include "EvolutionaryAlgorithm.hpp"
+#include "Genome.hpp"
 
 class ofApp : public ofBaseApp{
 

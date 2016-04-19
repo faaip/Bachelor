@@ -8,11 +8,6 @@
 
 #include "Voronoi.hpp"
 
-#define _width 820
-#define _height 615
-#define _deep 35
-#define _nCells 60 // Number of cells
-
 Voronoi::Voronoi(){
     // Lights and cam setup
     ofEnableAlphaBlending();
@@ -39,7 +34,8 @@ void Voronoi::draw(){
     // Draw center spheres
     if(isShowingPoints){
         for (int i = 0; i < cellCentroids.size(); i++){
-            ofSphere(cellCentroids[i], cellRadius[i]*0.15);
+            ofSetColor(0,190);
+            ofDrawSphere(cellCentroids[i], cellRadius[i]*0.15);
             ofSetColor(255);
             ofDrawBitmapString(ofToString(cellRadius[i]), 15+cellCentroids[i].x, cellCentroids[i].y);
         }
@@ -50,8 +46,6 @@ void Voronoi::draw(){
         for(int i = 0; i < cellMeshes.size(); i++){
             ofSetColor(100,30);
             cellMeshes[i].drawFaces();
-            
-            
             ofPushStyle();
             ofSetLineWidth(3);
             ofSetColor(255);
@@ -67,14 +61,13 @@ void Voronoi::draw(){
     ofPopMatrix();
 }
 
-void Voronoi::createNew(){
+void Voronoi::createPhenotype(Genome genome){
     //  Fresh begining
     cellMeshes.clear();
     cellCentroids.clear();
     cellRadius.clear();
     
     //  Define a container
-    //
     voro::container con(-_width*0.5,_width*0.5,
                         -_height*0.5,_height*0.5,
                         -_deep*0.5,_deep*0.5,
@@ -95,15 +88,14 @@ void Voronoi::createNew(){
         con.add_wall(cone);
     }
     
-    //  Add the cell seed to the container
-    for(int i = 0; i < _nCells;i++){
-        ofPoint newCell = ofPoint(ofRandom(-_width*0.5,_width*0.5),
-                                  ofRandom(-_height*0.5,_height*0.5),
-                                  ofRandom(-_deep*0.25,_deep*0.25));
-        
-        addCellSeed(con, newCell, i, true);
+    int i = 0;
+    for(auto cell : genome.chromosome){
+        addCellSeed(con, cell, i, true);
+        i++;
     }
     
+    cout << con.sum_cell_volumes() << endl; // summed cell volume
+        
     cellMeshes = getCellsFromContainer(con,0.0);
     cellMeshWireframes = getCellsFromContainer(con,0.0,true);
     cellRadius = getCellsRadius(con);

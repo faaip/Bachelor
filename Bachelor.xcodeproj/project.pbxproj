@@ -81,6 +81,7 @@
 		BB0329591CBE96F100287F29 /* Genome.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Genome.hpp; sourceTree = "<group>"; };
 		BB03295B1CBE970E00287F29 /* EvolutionaryAlgorithm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EvolutionaryAlgorithm.cpp; sourceTree = "<group>"; };
 		BB03295C1CBE970E00287F29 /* EvolutionaryAlgorithm.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EvolutionaryAlgorithm.hpp; sourceTree = "<group>"; };
+		BB3B27201CC129980058B381 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		BB723D391CBEE0A800FEFE9E /* Voronoi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Voronoi.cpp; sourceTree = "<group>"; };
 		BB723D3A1CBEE0A800FEFE9E /* Voronoi.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Voronoi.hpp; sourceTree = "<group>"; };
 		BB723D3E1CBEE1F000FEFE9E /* ofxVoro.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxVoro.cpp; sourceTree = "<group>"; };
@@ -316,6 +317,7 @@
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				BB0329541CBE93D700287F29 /* GUI.cpp */,
 				BB0329551CBE93D700287F29 /* GUI.hpp */,
+				BB3B27201CC129980058B381 /* Defines.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;

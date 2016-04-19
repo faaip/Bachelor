@@ -10,8 +10,10 @@
 #define Voronoi_hpp
 
 #include <stdio.h>
+#include "Defines.h"
 #include "ofMain.h"
 #include "ofxVoro.h"
+#include "Genome.hpp"
 
 class Voronoi{
 public:
@@ -19,7 +21,7 @@ public:
     void update();
     void draw();
     void setup();
-    void createPhenotype();
+    void createPhenotype(Genome genome);
         
     // Rendering stuff
     ofEasyCam   cam;

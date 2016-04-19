@@ -3,11 +3,14 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     gui.setup(&voronoi,&evolutionaryAlgorithm);
-    voronoi.createNew();
+    Genome genome = Genome();
+    voronoi.createPhenotype(genome);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    
+
 
 }
 
@@ -20,8 +23,8 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    voronoi.createNew();
-
+    Genome genome = Genome();
+    voronoi.createPhenotype(genome);
 }
 
 //--------------------------------------------------------------

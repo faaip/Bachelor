@@ -10,6 +10,7 @@
 #define Genome_hpp
 
 #include <stdio.h>
+#include "Defines.h"
 #include "ofMain.h"
 
 class Genome{
