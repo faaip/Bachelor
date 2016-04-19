@@ -25,6 +25,20 @@ void EvolutionaryAlgorithm::initializePopulation(){
     }
     
     evaluatePopulation();
+    
+  
+}
+
+void EvolutionaryAlgorithm::startEvolution(){
+    // Initialisaasi
+    // Evaluate
+    
+    // LOOP
+        // SELECT
+        // RECOMBINE
+        // MUTATE
+        // EVALUATE
+        // SELECT
 }
 
 void EvolutionaryAlgorithm::evaluatePopulation(){
@@ -42,7 +56,20 @@ bool EvolutionaryAlgorithm::hasHigherFitness(Genome x, Genome y){
 }
 
 void EvolutionaryAlgorithm::produceNextGeneration(){
+    
+    // Choosing parents using roulette wheel selection
+    
     // Producing the next generation
+    
+    // Calculate sum of fitness
+    sumOfFitness = 0;
+    
+    for (vector<Genome>::iterator g= population.begin(); g!=population.end(); g++){
+        sumOfFitness+=g->fitness;
+    }
+    
+   // http://stackoverflow.com/questions/24609131/implementation-of-roulette-wheel-selection
+    
 }
 
 void EvolutionaryAlgorithm::calculateFitness(Genome* g){
@@ -57,7 +84,7 @@ void EvolutionaryAlgorithm::calculateFitness(Genome* g){
         f += middle.distance((*c));
     }
     
-    g->fitness = f;
+    g->fitness = f/10;
 
     
 }

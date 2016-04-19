@@ -22,12 +22,14 @@ public:
     void evaluatePopulation();
     void produceNextGeneration();
     void calculateFitness(Genome* g);
+    void startEvolution();
     bool hasHigherFitness(Genome x, Genome y);
     
     
     // Variables
     int populationSize = 100;
     vector<Genome> population;
+    float sumOfFitness;
 };
 
 #endif /* EvolutionaryAlgorithm_hpp */
