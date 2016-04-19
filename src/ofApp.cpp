@@ -3,9 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     gui.setup(&voronoi,&evolutionaryAlgorithm);
-    Genome genome = Genome();
-    genome.randomizeChromosome();
-    voronoi.createPhenotype(genome);
+    evolutionaryAlgorithm.initializePopulation();
 }
 
 //--------------------------------------------------------------
@@ -24,9 +22,9 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    Genome genome = Genome();
-    genome.randomizeChromosome();
-    voronoi.createPhenotype(genome);
+//    Genome genome = Genome();
+//    genome.randomizeChromosome();
+//    voronoi.createPhenotype(genome);
 }
 
 //--------------------------------------------------------------

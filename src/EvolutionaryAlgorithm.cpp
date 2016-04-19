@@ -16,20 +16,21 @@ EvolutionaryAlgorithm::EvolutionaryAlgorithm(){
 
 void EvolutionaryAlgorithm::initializePopulation(){
     // Initializes the population with random genomes
+    cout << "Initialising population with population size: " << populationSize << endl;
     
     for(int i = 0; i<populationSize; i++ ){
-        
         Genome genome = Genome();
         genome.randomizeChromosome();
         population.push_back(genome);
-    
     }
+    
+    evaluatePopulation();
 }
 
 void EvolutionaryAlgorithm::evaluatePopulation(){
     // Evaluates each genome at sets fitness accordingly
-    for(auto genome : population){
-        calculateFitness(genome);
+    for (vector<Genome>::iterator g= population.begin(); g!=population.end(); g++){
+        calculateFitness(&(*g));
     }
     
     // Sort according to fitness
@@ -44,8 +45,19 @@ void EvolutionaryAlgorithm::produceNextGeneration(){
     // Producing the next generation
 }
 
-void EvolutionaryAlgorithm::calculateFitness(Genome g){
+void EvolutionaryAlgorithm::calculateFitness(Genome* g){
+    // TEMP FITNESS - FURTHES FROM MIDDLE:
+    
+    //TODO:Calculate fitness
+    float f = 0;
+    // Distance from middle
+    ofPoint middle(_width/2,_height/2,_deep/2);
+    
+    for (vector<ofPoint>::iterator c= g->chromosome.begin(); c!=g->chromosome.end(); c++){
+        f += middle.distance((*c));
+    }
+    
+    g->fitness = f;
 
-//TODO:Calculate fitness
-
+    
 }

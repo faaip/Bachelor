@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "ofMain.h"
 #include "Genome.hpp"
+#include "Defines.h"
 
 class EvolutionaryAlgorithm{
 public:
@@ -20,12 +21,12 @@ public:
     void initializePopulation();
     void evaluatePopulation();
     void produceNextGeneration();
-    void calculateFitness(Genome g);
+    void calculateFitness(Genome* g);
     bool hasHigherFitness(Genome x, Genome y);
     
     
     // Variables
-    int populationSize;
+    int populationSize = 100;
     vector<Genome> population;
 };
 

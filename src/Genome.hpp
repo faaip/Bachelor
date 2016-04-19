@@ -23,14 +23,15 @@ public:
     void mutate();
     
     // Variables
-    float fitness;
+    float fitness = 0;
     vector<ofPoint> chromosome;
   
     // Overload < operator
-    bool operator<(const Genome& b)
+    bool operator<(Genome other) const
     {
-        return this->fitness < b.fitness;
-    }
+        return fitness > other.fitness;
+    };
+
     
 };
 
