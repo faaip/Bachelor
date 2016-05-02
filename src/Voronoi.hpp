@@ -34,7 +34,6 @@ public:
     
     bool isShowingPoints = true;
     bool isShowingMesh = true;
-    
     int tessellationType = 0;
 };
 

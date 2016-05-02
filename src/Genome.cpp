@@ -13,6 +13,7 @@ Genome::Genome(){
 }
 
 void Genome::randomizeChromosome(){
+    chromosome.clear();
     for(int i = 0; i < NUMBER_OF_POINTS;i++){
         ofPoint newCell = ofPoint(ofRandom(-_width*0.5,_width*0.5),
                                   ofRandom(-_height*0.5,_height*0.5),
@@ -35,9 +36,9 @@ Genome Genome::reproduce(Genome otherParent){
         child.chromosome.push_back(otherParent.chromosome.at(i));
     }
     
-    if(ofRandom(1)>mutationProbability){
+//    if(ofRandom(1)>mutationProbability){
         child.mutate();
-    }
+//    }
     
     return child;
 }
@@ -45,9 +46,11 @@ Genome Genome::reproduce(Genome otherParent){
 void Genome::mutate(){
     for (vector<ofPoint>::iterator c= chromosome.begin(); c!=chromosome.end(); c++){
         if(ofRandom(1)>mutationRate){
-            c->set((ofRandom(-_width*0.5,_width*0.5),
-                    ofRandom(-_height*0.5,_height*0.5),
-                    ofRandom(-_deep*0.25,_deep*0.25)));
+            c->set((ofRandom(-_width,_width),
+                    ofRandom(-_height,_height),
+                    ofRandom(-_deep,_deep)));
+            cout << "MUTATION" << endl;
         }
     }
+    randomizeChromosome();
 }

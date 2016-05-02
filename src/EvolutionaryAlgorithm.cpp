@@ -59,10 +59,6 @@ void EvolutionaryAlgorithm::evaluatePopulation(){
     
     // Sort according to fitness
     std::sort(population.begin(),population.end());
-    
-    double sum = 0;
-    
-    cout << "Highscorer is: " << population.front().fitness << " low is: " << population.back().fitness << endl;
 }
 
 
@@ -117,7 +113,7 @@ void EvolutionaryAlgorithm::produceNextGeneration(){
         }
         
         // http://geneticalgorithms.ai-depot.com/Tutorial/Overview.html
-        // Crossover only happens 70 % of the time
+        // Crossover only happens x % of the time
         if(ofRandom(1) < crossoverProbability){
             newPopulation.push_back(mother->reproduce(*father));
         }else{
@@ -134,12 +130,10 @@ void EvolutionaryAlgorithm::produceNextGeneration(){
 
 void EvolutionaryAlgorithm::calculateFitness(Genome* g){
     // TEMP FITNESS - FURTHEST FROM MIDDLE:
-    
-    //TODO:Calculate fitness
     float f = 0;
     // Distance from middle
     ofPoint middle(_width/2,_height/2,_deep/2);
-    
+
     for (vector<ofPoint>::iterator c= g->chromosome.begin(); c!=g->chromosome.end(); c++){
         f = middle.distance((*c));
     }
@@ -149,6 +143,14 @@ void EvolutionaryAlgorithm::calculateFitness(Genome* g){
     }
     
     g->fitness = f;
+}
+
+float EvolutionaryAlgorithm::getAverageFitness(){
+    double sum = 0;
+    for (vector<Genome>::iterator g= population.begin(); g!=population.end(); g++){
+        sum += g->fitness;
+    }
     
+    return sum/population.size();
     
 }

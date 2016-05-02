@@ -29,9 +29,10 @@ public:
     // Variables
     int populationSize = 100;
     int generationCount = 0;
-    int eliteCount = 0; //
-    float crossoverProbability = 0.7;
+    int eliteCount = 2; //
+    float crossoverProbability = 0.3;
     vector<Genome> population;
+    float getAverageFitness();
 };
 
 #endif /* EvolutionaryAlgorithm_hpp */
