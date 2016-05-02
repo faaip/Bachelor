@@ -3,16 +3,31 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     gui.setup(&voronoi,&evolutionaryAlgorithm);
-    evolutionaryAlgorithm.initializePopulation();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    if(evolutionaryAlgorithm.evolutionStarted){
+        voronoi.createPhenotype(evolutionaryAlgorithm.population.front());
+        
+        if(evolutionaryAlgorithm.generationCount < 5000)
+        {
+            evolutionaryAlgorithm.evaluatePopulation();
+            evolutionaryAlgorithm.produceNextGeneration();
+            evolutionaryAlgorithm.generationCount++;
+        }
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     voronoi.draw();
+    
+    // Update GUI
+    if(evolutionaryAlgorithm.evolutionStarted){
+    gui.currentGenerationNumberLabel->setLabel("Current generation: " + ofToString(evolutionaryAlgorithm.generationCount));
+    gui.bestFitnessLabel->setLabel("Best fitness: " + ofToString(evolutionaryAlgorithm.population.front().fitness));
+    }
 }
 
 

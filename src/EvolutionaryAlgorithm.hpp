@@ -24,12 +24,12 @@ public:
     void calculateFitness(Genome* g);
     void startEvolution();
     bool hasHigherFitness(Genome x, Genome y);
-    
+    bool evolutionStarted = false;
     
     // Variables
     int populationSize = 100;
     int generationCount = 0;
-    int eliteCount = 2; //
+    int eliteCount = 0; //
     float crossoverProbability = 0.7;
     vector<Genome> population;
 };

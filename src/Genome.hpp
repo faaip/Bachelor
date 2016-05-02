@@ -25,14 +25,14 @@ public:
     // Variables
     float fitness = 0;
     vector<ofPoint> chromosome;
-    float probability = 0;
-  
+    float mutationProbability = 0.5;
+    float mutationRate = 0.7;
+
     // Overload < operator
     bool operator<(Genome other) const
     {
         return fitness > other.fitness;
     };
-
     
 };
 

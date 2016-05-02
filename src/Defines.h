@@ -12,6 +12,6 @@
 #define NUMBER_OF_POINTS 20
 #define _width 820
 #define _height 615
-#define _deep 55
+#define _deep 1
 
 #endif /* Defines_h */

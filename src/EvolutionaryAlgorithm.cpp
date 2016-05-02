@@ -16,28 +16,30 @@ EvolutionaryAlgorithm::EvolutionaryAlgorithm(){
 
 void EvolutionaryAlgorithm::initializePopulation(){
     // Initializes the population with random genomes
-    cout << "Initialising population with population size: " << populationSize << endl;
     for(int i = 0; i<populationSize; i++ ){
         Genome genome = Genome();
         genome.randomizeChromosome();
         population.push_back(genome);
     }
+    cout << "Initialising population with population size: " << population.size() << endl;
 }
 
 void EvolutionaryAlgorithm::startEvolution(){
+    evolutionStarted = true;
+    
+    
     // Initialisaasi
     initializePopulation();
     // Evaluate
     evaluatePopulation();
     
-    while(generationCount < 1000)
-    {
-        cout << "At generation: " << generationCount << " higher scorer is: " << population.front().fitness << endl;
-        // Evaluate
-        evaluatePopulation();
-        produceNextGeneration();
-        generationCount++;
-    }
+//    while(generationCount < 5000)
+//    {
+//        // Evaluate
+//        evaluatePopulation();
+//        produceNextGeneration();
+//        generationCount++;
+//    }
     
     // LOOP
     // SELECT
@@ -45,6 +47,8 @@ void EvolutionaryAlgorithm::startEvolution(){
     // MUTATE
     // EVALUATE
     // SELECT
+    
+    
 }
 
 void EvolutionaryAlgorithm::evaluatePopulation(){
@@ -55,6 +59,10 @@ void EvolutionaryAlgorithm::evaluatePopulation(){
     
     // Sort according to fitness
     std::sort(population.begin(),population.end());
+    
+    double sum = 0;
+    
+    cout << "Highscorer is: " << population.front().fitness << " low is: " << population.back().fitness << endl;
 }
 
 
@@ -140,7 +148,7 @@ void EvolutionaryAlgorithm::calculateFitness(Genome* g){
         cout << "DET HER MÅ IKKE SKE!" << endl;
     }
     
-    g->fitness = f/10;
+    g->fitness = f;
     
     
 }

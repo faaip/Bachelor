@@ -35,9 +35,19 @@ Genome Genome::reproduce(Genome otherParent){
         child.chromosome.push_back(otherParent.chromosome.at(i));
     }
     
+    if(ofRandom(1)>mutationProbability){
+        child.mutate();
+    }
+    
     return child;
 }
 
 void Genome::mutate(){
-    
+    for (vector<ofPoint>::iterator c= chromosome.begin(); c!=chromosome.end(); c++){
+        if(ofRandom(1)>mutationRate){
+            c->set((ofRandom(-_width*0.5,_width*0.5),
+                    ofRandom(-_height*0.5,_height*0.5),
+                    ofRandom(-_deep*0.25,_deep*0.25)));
+        }
+    }
 }

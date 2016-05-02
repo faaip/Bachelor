@@ -27,7 +27,7 @@ GUI::GUI(){
     showTessellationMeshToggle = gui->addToggle("Show tessellation");
     bestFitnessLabel = gui->addLabel("Best fitness: ");
     avgFitnessLabel = gui->addLabel("Average fitness: ");
-    currentGenerationNumberLabel = gui->addLabel("Current generation");
+    currentGenerationNumberLabel = gui->addLabel("Current generation: ");
     gui->addFRM(); // Framerate monitor
     startButton = gui->addButton("Start evolution!");
     gui->addFooter(); // Footer for collapsing
