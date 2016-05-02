@@ -56,7 +56,6 @@ void GUI::setup(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlgorithm){
 void GUI::onButtonEvent(ofxDatGuiButtonEvent e){
     if(e.target == startButton){
         evolutionaryAlgorithm->startEvolution();
-        cout << "Start button pressed" << endl;
     }
     
     if(e.target == showCenterPointsToggle){

@@ -25,6 +25,7 @@ public:
     // Variables
     float fitness = 0;
     vector<ofPoint> chromosome;
+    float probability = 0;
   
     // Overload < operator
     bool operator<(Genome other) const

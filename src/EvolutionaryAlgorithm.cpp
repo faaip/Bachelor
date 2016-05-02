@@ -17,28 +17,34 @@ EvolutionaryAlgorithm::EvolutionaryAlgorithm(){
 void EvolutionaryAlgorithm::initializePopulation(){
     // Initializes the population with random genomes
     cout << "Initialising population with population size: " << populationSize << endl;
-    
     for(int i = 0; i<populationSize; i++ ){
         Genome genome = Genome();
         genome.randomizeChromosome();
         population.push_back(genome);
     }
-    
-    evaluatePopulation();
-    
-  
 }
 
 void EvolutionaryAlgorithm::startEvolution(){
     // Initialisaasi
+    initializePopulation();
     // Evaluate
+    evaluatePopulation();
+    
+    while(generationCount < 1000)
+    {
+        cout << "At generation: " << generationCount << " higher scorer is: " << population.front().fitness << endl;
+        // Evaluate
+        evaluatePopulation();
+        produceNextGeneration();
+        generationCount++;
+    }
     
     // LOOP
-        // SELECT
-        // RECOMBINE
-        // MUTATE
-        // EVALUATE
-        // SELECT
+    // SELECT
+    // RECOMBINE
+    // MUTATE
+    // EVALUATE
+    // SELECT
 }
 
 void EvolutionaryAlgorithm::evaluatePopulation(){
@@ -51,29 +57,75 @@ void EvolutionaryAlgorithm::evaluatePopulation(){
     std::sort(population.begin(),population.end());
 }
 
-bool EvolutionaryAlgorithm::hasHigherFitness(Genome x, Genome y){
-    return x.fitness < y.fitness;
-}
 
 void EvolutionaryAlgorithm::produceNextGeneration(){
+    // http://geneticalgorithms.ai-depot.com/Tutorial/Overview.html - roulette wheel selection
+    // http://www.codeproject.com/Articles/707505/Genetic-Algorithms-Demystified
+    // Kilde om forskellige selektioner: http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.140.3747
     
-    // Choosing parents using roulette wheel selection
+    vector<Genome> newPopulation;
+    
+    // Sort according to fitness
+    std::sort(population.begin(),population.end());
     
     // Producing the next generation
-    
-    // Calculate sum of fitness
-    sumOfFitness = 0;
-    
-    for (vector<Genome>::iterator g= population.begin(); g!=population.end(); g++){
-        sumOfFitness+=g->fitness;
+    // Elite first
+    for(int i = 0; i < eliteCount; i++){
+        newPopulation.push_back(population.at(i));
     }
     
-   // http://stackoverflow.com/questions/24609131/implementation-of-roulette-wheel-selection
+    // Roulette wheel selection
+    // Sum all fitnesses
+    int totalSum = 0;
+    for (vector<Genome>::iterator g= population.begin(); g!=population.end(); g++){
+        totalSum += g->fitness;
+    }
     
+    while(newPopulation.size() < populationSize){
+        int rand = ofRandom(0, totalSum);
+        int partialSum = 0;
+        Genome* mother;
+        Genome* father;
+        
+        // Find mother
+        for (vector<Genome>::iterator g= population.begin(); g!=population.end(); g++){
+            partialSum += g->fitness;
+            if(partialSum >= rand){
+                mother = &(*g);
+                break;
+            }
+        }
+        
+        rand = ofRandom(0, totalSum);
+        partialSum = 0;
+        
+        // Find father
+        for (vector<Genome>::iterator g= population.begin(); g!=population.end(); g++){
+            partialSum += g->fitness;
+            if(partialSum >= rand){
+                father = &(*g);
+                break;
+            }
+        }
+        
+        // http://geneticalgorithms.ai-depot.com/Tutorial/Overview.html
+        // Crossover only happens 70 % of the time
+        if(ofRandom(1) < crossoverProbability){
+            newPopulation.push_back(mother->reproduce(*father));
+        }else{
+            if(ofRandom(1)<0.5){
+                newPopulation.push_back(*mother);
+            }else{
+                newPopulation.push_back(*father);
+            }
+        }
+    }
+    
+    population = newPopulation;
 }
 
 void EvolutionaryAlgorithm::calculateFitness(Genome* g){
-    // TEMP FITNESS - FURTHES FROM MIDDLE:
+    // TEMP FITNESS - FURTHEST FROM MIDDLE:
     
     //TODO:Calculate fitness
     float f = 0;
@@ -81,10 +133,14 @@ void EvolutionaryAlgorithm::calculateFitness(Genome* g){
     ofPoint middle(_width/2,_height/2,_deep/2);
     
     for (vector<ofPoint>::iterator c= g->chromosome.begin(); c!=g->chromosome.end(); c++){
-        f += middle.distance((*c));
+        f = middle.distance((*c));
+    }
+    
+    if(f <= 0 ){
+        cout << "DET HER MÅ IKKE SKE!" << endl;
     }
     
     g->fitness = f/10;
-
+    
     
 }

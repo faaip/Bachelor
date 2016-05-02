@@ -16,6 +16,7 @@ Voronoi::Voronoi(){
     light.setPosition(100,500, 100);
     cam.setAutoDistance(true);
     
+    
 }
 
 void Voronoi::update(){
@@ -24,7 +25,6 @@ void Voronoi::update(){
 
 void Voronoi::draw(){
     ofBackgroundGradient(ofColor(255), ofColor(170), OF_GRADIENT_CIRCULAR);
-    
     ofPushMatrix();
     cam.begin();
     light.enable();
@@ -40,6 +40,10 @@ void Voronoi::draw(){
             ofDrawBitmapString(ofToString(cellRadius[i]), 15+cellCentroids[i].x, cellCentroids[i].y);
         }
     }
+    
+    // Draw middle point
+    ofSetColor(255,0,0);
+    ofDrawSphere(ofPoint(_width/2,_height/2,_deep/2), 10);
     
     // Draw tessellation
     if(isShowingMesh) {
@@ -93,9 +97,7 @@ void Voronoi::createPhenotype(Genome genome){
         addCellSeed(con, cell, i, true);
         i++;
     }
-    
-    cout << con.sum_cell_volumes() << endl; // summed cell volume
-        
+            
     cellMeshes = getCellsFromContainer(con,0.0);
     cellMeshWireframes = getCellsFromContainer(con,0.0,true);
     cellRadius = getCellsRadius(con);
