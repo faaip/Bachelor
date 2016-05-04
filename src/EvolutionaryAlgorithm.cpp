@@ -132,10 +132,10 @@ void EvolutionaryAlgorithm::calculateFitness(Genome* g){
     // TEMP FITNESS - FURTHEST FROM MIDDLE:
     float f = 0;
     // Distance from middle
-    ofPoint middle(_width/2,_height/2,_deep/2);
+    ofPoint middle(0,0,0);
 
     for (vector<ofPoint>::iterator c= g->chromosome.begin(); c!=g->chromosome.end(); c++){
-        f = middle.distance((*c));
+        f += middle.distance((*c));
     }
     
     if(f <= 0 ){

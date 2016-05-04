@@ -36,10 +36,10 @@ Genome Genome::reproduce(Genome otherParent){
         child.chromosome.push_back(otherParent.chromosome.at(i));
     }
     
-//    if(ofRandom(1)>mutationProbability){
+    if(ofRandom(1)>mutationProbability){
         child.mutate();
-//    }
-    
+    }
+
     return child;
 }
 
@@ -49,7 +49,6 @@ void Genome::mutate(){
             c->set((ofRandom(-_width,_width),
                     ofRandom(-_height,_height),
                     ofRandom(-_deep,_deep)));
-            cout << "MUTATION" << endl;
         }
     }
     randomizeChromosome();

@@ -28,7 +28,7 @@ void ofApp::draw(){
         gui.currentGenerationNumberLabel->setLabel("Current generation: " + ofToString(evolutionaryAlgorithm.generationCount));
         gui.bestFitnessLabel->setLabel("Best fitness: " + ofToString(evolutionaryAlgorithm.population.front().fitness));
         gui.avgFitnessLabel->setLabel("Average fitness: " + ofToString(evolutionaryAlgorithm.getAverageFitness()));
-    
+        
         cout << "BEST : " << evolutionaryAlgorithm.population.front().fitness << " AVERAGE : " << ofToString(evolutionaryAlgorithm.getAverageFitness()) << " SIZE: " << evolutionaryAlgorithm.population.size() << endl;
     }
     
@@ -38,7 +38,12 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     if(key == 32){
-        voronoi.createPhenotype(evolutionaryAlgorithm.population.front());
+        if(evolutionaryAlgorithm.evolutionStarted){
+            evolutionaryAlgorithm.evolutionStarted = false;
+        }else{
+            evolutionaryAlgorithm.evolutionStarted = true;
+            
+        }
     }
 }
 
