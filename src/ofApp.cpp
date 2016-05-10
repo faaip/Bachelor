@@ -10,7 +10,7 @@ void ofApp::update(){
     if(evolutionaryAlgorithm.evolutionStarted){
         voronoi.createPhenotype(evolutionaryAlgorithm.population.front());
         
-        if(evolutionaryAlgorithm.generationCount < 5000000)
+        if(evolutionaryAlgorithm.generationCount < 5000)
         {
             evolutionaryAlgorithm.evaluatePopulation();
             evolutionaryAlgorithm.produceNextGeneration();
@@ -18,6 +18,8 @@ void ofApp::update(){
         }
     }
 }
+
+
 
 //--------------------------------------------------------------
 void ofApp::draw(){
@@ -28,8 +30,6 @@ void ofApp::draw(){
         gui.currentGenerationNumberLabel->setLabel("Current generation: " + ofToString(evolutionaryAlgorithm.generationCount));
         gui.bestFitnessLabel->setLabel("Best fitness: " + ofToString(evolutionaryAlgorithm.population.front().fitness));
         gui.avgFitnessLabel->setLabel("Average fitness: " + ofToString(evolutionaryAlgorithm.getAverageFitness()));
-        
-        cout << "BEST : " << evolutionaryAlgorithm.population.front().fitness << " AVERAGE : " << ofToString(evolutionaryAlgorithm.getAverageFitness()) << " SIZE: " << evolutionaryAlgorithm.population.size() << endl;
     }
     
 }

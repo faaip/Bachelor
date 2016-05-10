@@ -22,7 +22,7 @@ void Genome::randomizeChromosome(){
     }
 }
 
-Genome Genome::reproduce(Genome otherParent){
+Genome Genome::singlePointCrossover(Genome otherParent){
     // Reproducing using single-point crossover
     Genome child = Genome();
     
@@ -39,7 +39,38 @@ Genome Genome::reproduce(Genome otherParent){
     if(ofRandom(1)>mutationProbability){
         child.mutate();
     }
+    
+    return child;
+}
 
+Genome Genome::twoPointCrossover(Genome otherParent){
+    // Reproducing using two-point crossover
+    Genome child = Genome();
+    
+    int r1 = ofRandom(0,NUMBER_OF_POINTS);
+    int r2 = ofRandom(0,NUMBER_OF_POINTS);
+    
+    if (r1>r2)//sure that 2>1
+    {
+        std::swap(r1,r2);
+    }
+    
+    // From mother
+    for(int i = 0; i < r1; i++){
+        child.chromosome.push_back(this->chromosome.at(i));
+    }
+    
+    // From father
+    for(int i = r1; i < r2; i++){
+        child.chromosome.push_back(otherParent.chromosome.at(i));
+    }
+    
+    // From mother (again)
+    for(int i = r2; i < NUMBER_OF_POINTS; i++){
+        child.chromosome.push_back(this->chromosome.at(i));
+    }
+    
+    
     return child;
 }
 

@@ -25,14 +25,22 @@ public:
     // Variables
     float fitness = 0;
     vector<ofPoint> chromosome;
-    float mutationProbability = 0.34;
-    float mutationRate = 0.8;
+    float mutationProbability = 0.05;
+    float mutationRate = 0.2;
 
     // Overload < operator
     bool operator<(Genome other) const
     {
         return fitness > other.fitness;
     };
+    
+    // Crossover
+    Genome singlePointCrossover(Genome otherParent);
+    Genome twoPointCrossover(Genome otherParent);
+    
+    // Mutation
+    
+
     
 };
 

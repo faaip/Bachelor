@@ -9,8 +9,8 @@
 #include "GUI.hpp"
 
 GUI::GUI(){
-    vector<string> crossover = {"Single point crossover", "Two point crossover", "Uniform crossover", "Arithmetic crossover"};
-    vector<string> mutations = {"Bit string mutation", "Boundary", "Non-Uniform", "Uniform", "Gaussian"};
+    vector<string> crossover = {"Single point crossover", "Two point crossover"};
+    vector<string> mutations = {"Bit string mutation"};
     vector<string> fitnessFunctionChoices = {"1","2","3"};
     vector<string> tessellationTypes = {"Cylinder","Sphere","Cone"};
 
@@ -18,9 +18,7 @@ GUI::GUI(){
     // Add stuff to gui
     gui = new ofxDatGui( ofxDatGuiAnchor::TOP_LEFT );
     gui->addHeader(" ::: Evolutionary Voronoi Tessellation :::"); // Header
-    tessellationTypeDropdown = gui->addDropdown("Tessellation types", tessellationTypes);
     populationSizeSlider = gui->addSlider("Population size", 10, 250);
-    mutationDropdown = gui->addDropdown("Mutation", mutations);
     crossoverDropdown = gui->addDropdown("Crossover", crossover);
     fitnessFunctionsDropdown = gui->addDropdown("Fitness", fitnessFunctionChoices);
     showCenterPointsToggle = gui->addToggle("Show center points");
@@ -33,13 +31,11 @@ GUI::GUI(){
     gui->addFooter(); // Footer for collapsing
     
     // Add event listeners
-    tessellationTypeDropdown->onDropdownEvent(this, &GUI::onDropdownEvent);
     showCenterPointsToggle->onButtonEvent(this, &GUI::onButtonEvent);
     showTessellationMeshToggle->onButtonEvent(this, &GUI::onButtonEvent);
     startButton->onButtonEvent(this, &GUI::onButtonEvent);
     populationSizeSlider->onSliderEvent(this, &GUI::onSliderEvent);
-    
-
+    crossoverDropdown->onDropdownEvent(this, &GUI::onDropdownEvent);
 }
 
 void GUI::setup(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlgorithm){
@@ -69,9 +65,10 @@ void GUI::onButtonEvent(ofxDatGuiButtonEvent e){
     
 }
 
-void GUI::onDropdownEvent(ofxDatGuiDropdownEvent e){
-    if(e.target == tessellationTypeDropdown){
-        voronoi->tessellationType = e.child;
+void GUI::onDropdownEvent(ofxDatGuiDropdownEvent e){    
+    // Set type of crossover
+    if(e.target == crossoverDropdown){
+        evolutionaryAlgorithm->crossoverType = e.child;
     }
     
 }

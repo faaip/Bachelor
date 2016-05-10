@@ -27,28 +27,10 @@ void EvolutionaryAlgorithm::initializePopulation(){
 void EvolutionaryAlgorithm::startEvolution(){
     evolutionStarted = true;
     
-    
     // Initialisaasi
     initializePopulation();
     // Evaluate
     evaluatePopulation();
-    
-//    while(generationCount < 5000)
-//    {
-//        // Evaluate
-//        evaluatePopulation();
-//        produceNextGeneration();
-//        generationCount++;
-//    }
-    
-    // LOOP
-    // SELECT
-    // RECOMBINE
-    // MUTATE
-    // EVALUATE
-    // SELECT
-    
-    
 }
 
 void EvolutionaryAlgorithm::evaluatePopulation(){
@@ -115,7 +97,19 @@ void EvolutionaryAlgorithm::produceNextGeneration(){
         // http://geneticalgorithms.ai-depot.com/Tutorial/Overview.html
         // Crossover only happens x % of the time
         if(ofRandom(1) < crossoverProbability){
-            newPopulation.push_back(mother->reproduce(*father));
+            // switch case for different kinds of crossover
+            switch ( crossoverType ) {
+                case 0:
+                    // Singlepoint
+                    newPopulation.push_back(mother->singlePointCrossover(*father));
+                    break;
+                case 1:
+                    // Two-point crossover
+                    newPopulation.push_back(mother->twoPointCrossover(*father));
+                    break;
+            }
+            
+            
         }else{
             if(ofRandom(1)<0.5){
                 newPopulation.push_back(*mother);
@@ -133,7 +127,7 @@ void EvolutionaryAlgorithm::calculateFitness(Genome* g){
     float f = 0;
     // Distance from middle
     ofPoint middle(0,0,0);
-
+    
     for (vector<ofPoint>::iterator c= g->chromosome.begin(); c!=g->chromosome.end(); c++){
         f += middle.distance((*c));
     }

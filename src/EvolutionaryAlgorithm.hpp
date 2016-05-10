@@ -25,14 +25,18 @@ public:
     void startEvolution();
     bool hasHigherFitness(Genome x, Genome y);
     bool evolutionStarted = false;
-    
+    void setCrossoverType(int t);
+    void setMutationType(int t);
+
     // Variables
-    int populationSize = 100;
+    int populationSize = 30;
     int generationCount = 0;
     int eliteCount = 2; //
     float crossoverProbability = 0.3;
     vector<Genome> population;
     float getAverageFitness();
+    int mutationType = 0;
+    int crossoverType = 0;
 };
 
 #endif /* EvolutionaryAlgorithm_hpp */

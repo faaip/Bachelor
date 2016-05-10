@@ -28,9 +28,7 @@ public:
 
     // GUI Elements
     ofxDatGui* gui; // GUI Element
-    ofxDatGuiDropdown* tessellationTypeDropdown;
     ofxDatGuiSlider* populationSizeSlider;
-    ofxDatGuiDropdown* mutationDropdown;
     ofxDatGuiDropdown* crossoverDropdown;
     ofxDatGuiDropdown* fitnessFunctionsDropdown;
     ofxDatGuiToggle* showCenterPointsToggle;
@@ -43,8 +41,6 @@ public:
     // Variables
     class Voronoi* voronoi; // Voronoi pointer
     EvolutionaryAlgorithm* evolutionaryAlgorithm; // Pointer to evolutionary algorithm
-    
-    
 };
 
 #endif /* GUI_hpp */

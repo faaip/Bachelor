@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/EvolutionaryAlgorithm.cpp"
-            timestampString = "483912977.918772"
+            timestampString = "484569809.551063"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "EvolutionaryAlgorithm::calculateFitness(Genome* g)"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/EvolutionaryAlgorithm.cpp"
-            timestampString = "483913004.95482"
+            timestampString = "484569809.551063"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "EvolutionaryAlgorithm::calculateFitness(Genome* g)"
             landmarkType = "5">
          </BreakpointContent>
