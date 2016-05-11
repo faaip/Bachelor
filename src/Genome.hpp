@@ -23,7 +23,7 @@ public:
     // Variables
     double fitness = 0;
     vector<ofPoint> chromosome;
-    float mutationRate = 0.4;
+    float mutationRate = 0.2;
 
     // Overload < operator
     bool operator<(Genome other) const

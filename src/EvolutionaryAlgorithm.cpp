@@ -138,13 +138,8 @@ void EvolutionaryAlgorithm::calculateFitness(Genome* g){
             if(!(i ==j)){
                 g->fitness += std::abs(g->chromosome.at(i).squareDistance(g->chromosome.at(j))/1000000);
             }
-
         }
     }
-    
-
-    cout << g->fitness << endl;
-  
 }
 
 float EvolutionaryAlgorithm::getAverageFitness(){

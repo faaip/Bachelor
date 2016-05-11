@@ -41,10 +41,6 @@ void Voronoi::draw(){
         }
     }
     
-    // Draw middle point
-    ofSetColor(255,0,0);
-    ofDrawSphere(ofPoint(_width/2,_height/2,_deep/2), 10);
-    
     // Draw tessellation
     if(isShowingMesh) {
         for(int i = 0; i < cellMeshes.size(); i++){
@@ -72,9 +68,9 @@ void Voronoi::createPhenotype(Genome genome){
     cellRadius.clear();
     
     //  Define a container
-    voro::container con(-_width*0.5,_width*0.5,
-                        -_height*0.5,_height*0.5,
-                        -_deep*0.5,_deep*0.5,
+    voro::container con(-_width,_width,
+                        -_height,_height,
+                        -_deep,_deep,
                         1,1,1,
                         false,false,false,
                         8);
@@ -82,22 +78,23 @@ void Voronoi::createPhenotype(Genome genome){
     
     // Add walls depending on choice in GUI
     if(tessellationType == 1){
-        voro::wall_cylinder cyl(0,0,0,0,0,20, min(_width*0.5, _height*0.5));
+        voro::wall_cylinder cyl(0,0,0,0,0,20, min(_width, _height));
         con.add_wall(cyl);
     }else if (tessellationType == 2){
-        voro::wall_sphere sph(0, 0, 0, min(_width*0.5, _height*0.5) );
+        voro::wall_sphere sph(0, 0, 0, min(_width, _height) );
         con.add_wall(sph);
     }else if (tessellationType == 3){
-        voro::wall_cone cone(0,0,min(_width*0.5, _height*0.5),0,0,-1,atan(0.5));
+        voro::wall_cone cone(0,0,min(_width, _height),0,0,-1,atan(0.5));
         con.add_wall(cone);
     }
     
-    int i = 0;
-    for(auto cell : genome.chromosome){
-        addCellSeed(con, cell, i, true);
-        i++;
+    
+    for(int i = 0; i < genome.chromosome.size(); i++){
+        addCellSeed(con, genome.chromosome.at(i), i, true);
+
     }
-            
+    
+    
     cellMeshes = getCellsFromContainer(con,0.0);
     cellMeshWireframes = getCellsFromContainer(con,0.0,true);
     cellRadius = getCellsRadius(con);
