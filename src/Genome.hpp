@@ -3,8 +3,6 @@
 //  Bachelor
 //
 //  Created by Frederik Tollund Juutilainen on 13/04/16.
-//
-//
 
 #ifndef Genome_hpp
 #define Genome_hpp
@@ -23,10 +21,9 @@ public:
     void mutate();
     
     // Variables
-    float fitness = 0;
+    double fitness = 0;
     vector<ofPoint> chromosome;
-    float mutationProbability = 0.05;
-    float mutationRate = 0.2;
+    float mutationRate = 0.4;
 
     // Overload < operator
     bool operator<(Genome other) const

@@ -15,9 +15,9 @@ Genome::Genome(){
 void Genome::randomizeChromosome(){
     chromosome.clear();
     for(int i = 0; i < NUMBER_OF_POINTS;i++){
-        ofPoint newCell = ofPoint(ofRandom(-_width*0.5,_width*0.5),
-                                  ofRandom(-_height*0.5,_height*0.5),
-                                  ofRandom(-_deep*0.25,_deep*0.25));
+        ofPoint newCell = ofPoint(ofRandom(0,_width),
+                                  ofRandom(0,_height),
+                                  ofRandom(0,_deep));
         chromosome.push_back(newCell);
     }
 }
@@ -26,20 +26,15 @@ Genome Genome::singlePointCrossover(Genome otherParent){
     // Reproducing using single-point crossover
     Genome child = Genome();
     
-    int r = ofRandom(0,NUMBER_OF_POINTS);
+    int r = ofRandom(0,NUMBER_OF_POINTS); // random single point
     
     for(int i = 0; i < r; i++){
-        child.chromosome.push_back(chromosome.at(i));
+        child.chromosome.push_back(chromosome.at(i)); // from mother
     }
     
     for(int i = r; i < NUMBER_OF_POINTS; i++){
-        child.chromosome.push_back(otherParent.chromosome.at(i));
+        child.chromosome.push_back(otherParent.chromosome.at(i)); // from other parent
     }
-    
-    if(ofRandom(1)>mutationProbability){
-        child.mutate();
-    }
-    
     return child;
 }
 
@@ -77,9 +72,9 @@ Genome Genome::twoPointCrossover(Genome otherParent){
 void Genome::mutate(){
     for (vector<ofPoint>::iterator c= chromosome.begin(); c!=chromosome.end(); c++){
         if(ofRandom(1)>mutationRate){
-            c->set((ofRandom(-_width,_width),
-                    ofRandom(-_height,_height),
-                    ofRandom(-_deep,_deep)));
+            c->set((ofRandom(0,_width),
+                    ofRandom(0,_height),
+                    ofRandom(0,_deep)));
         }
     }
     randomizeChromosome();

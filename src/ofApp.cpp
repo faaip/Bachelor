@@ -12,7 +12,6 @@ void ofApp::update(){
         
         if(evolutionaryAlgorithm.generationCount < 5000)
         {
-            evolutionaryAlgorithm.evaluatePopulation();
             evolutionaryAlgorithm.produceNextGeneration();
             evolutionaryAlgorithm.generationCount++;
         }

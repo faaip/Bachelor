@@ -76,18 +76,18 @@ void Voronoi::createPhenotype(Genome genome){
                         -_height*0.5,_height*0.5,
                         -_deep*0.5,_deep*0.5,
                         1,1,1,
-                        true,true,true,
+                        false,false,false,
                         8);
     
     
     // Add walls depending on choice in GUI
-    if(tessellationType == 0){
+    if(tessellationType == 1){
         voro::wall_cylinder cyl(0,0,0,0,0,20, min(_width*0.5, _height*0.5));
         con.add_wall(cyl);
-    }else if (tessellationType == 1){
+    }else if (tessellationType == 2){
         voro::wall_sphere sph(0, 0, 0, min(_width*0.5, _height*0.5) );
         con.add_wall(sph);
-    }else if (tessellationType == 2){
+    }else if (tessellationType == 3){
         voro::wall_cone cone(0,0,min(_width*0.5, _height*0.5),0,0,-1,atan(0.5));
         con.add_wall(cone);
     }

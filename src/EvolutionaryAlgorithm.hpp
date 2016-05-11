@@ -32,11 +32,13 @@ public:
     int populationSize = 30;
     int generationCount = 0;
     int eliteCount = 2; //
-    float crossoverProbability = 0.3;
+    float crossoverProbability = 0.8;
     vector<Genome> population;
     float getAverageFitness();
     int mutationType = 0;
     int crossoverType = 0;
+    float mutationProbability = 0.30;
+
 };
 
 #endif /* EvolutionaryAlgorithm_hpp */

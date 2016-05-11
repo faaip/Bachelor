@@ -12,7 +12,7 @@ GUI::GUI(){
     vector<string> crossover = {"Single point crossover", "Two point crossover"};
     vector<string> mutations = {"Bit string mutation"};
     vector<string> fitnessFunctionChoices = {"1","2","3"};
-    vector<string> tessellationTypes = {"Cylinder","Sphere","Cone"};
+    vector<string> tessellationTypes = {"Flat surface","Cylinder","Sphere","Cone"};
 
     
     // Add stuff to gui

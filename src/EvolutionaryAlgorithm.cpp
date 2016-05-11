@@ -7,6 +7,7 @@
 //
 
 #include "EvolutionaryAlgorithm.hpp"
+#include <cmath>
 
 EvolutionaryAlgorithm::EvolutionaryAlgorithm(){
     
@@ -30,7 +31,6 @@ void EvolutionaryAlgorithm::startEvolution(){
     // Initialisaasi
     initializePopulation();
     // Evaluate
-    evaluatePopulation();
 }
 
 void EvolutionaryAlgorithm::evaluatePopulation(){
@@ -50,6 +50,8 @@ void EvolutionaryAlgorithm::produceNextGeneration(){
     // Kilde om forskellige selektioner: http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.140.3747
     
     vector<Genome> newPopulation;
+    
+    evaluatePopulation();
     
     // Sort according to fitness
     std::sort(population.begin(),population.end());
@@ -98,19 +100,23 @@ void EvolutionaryAlgorithm::produceNextGeneration(){
         // Crossover only happens x % of the time
         if(ofRandom(1) < crossoverProbability){
             // switch case for different kinds of crossover
+            Genome child;
             switch ( crossoverType ) {
                 case 0:
                     // Singlepoint
-                    newPopulation.push_back(mother->singlePointCrossover(*father));
+                    child = mother->singlePointCrossover(*father);
+                    if(ofRandom(1)<mutationProbability)child.mutate();
+                    newPopulation.push_back(child);
                     break;
                 case 1:
                     // Two-point crossover
-                    newPopulation.push_back(mother->twoPointCrossover(*father));
+                    child = mother->twoPointCrossover(*father);
+                    if(ofRandom(1)<mutationProbability)child.mutate();
+                    newPopulation.push_back(child);
                     break;
             }
-            
-            
         }else{
+            // Parents enter the mix
             if(ofRandom(1)<0.5){
                 newPopulation.push_back(*mother);
             }else{
@@ -123,20 +129,22 @@ void EvolutionaryAlgorithm::produceNextGeneration(){
 }
 
 void EvolutionaryAlgorithm::calculateFitness(Genome* g){
-    // TEMP FITNESS - FURTHEST FROM MIDDLE:
-    float f = 0;
-    // Distance from middle
-    ofPoint middle(0,0,0);
+    // Reset fitness
+    g->fitness = 0;
     
-    for (vector<ofPoint>::iterator c= g->chromosome.begin(); c!=g->chromosome.end(); c++){
-        f += middle.distance((*c));
+    
+    for(int i = 0; i < g->chromosome.size();i++){
+        for(int j = 0; j < g->chromosome.size();j++){
+            if(!(i ==j)){
+                g->fitness += std::abs(g->chromosome.at(i).squareDistance(g->chromosome.at(j))/1000000);
+            }
+
+        }
     }
     
-    if(f <= 0 ){
-        cout << "DET HER MÅ IKKE SKE!" << endl;
-    }
-    
-    g->fitness = f;
+
+    cout << g->fitness << endl;
+  
 }
 
 float EvolutionaryAlgorithm::getAverageFitness(){
