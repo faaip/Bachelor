@@ -7,14 +7,15 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    if(evolutionaryAlgorithm.evolutionStarted){
+    if(evolutionaryAlgorithm.evolutionRunning){
+      
         voronoi.createPhenotype(evolutionaryAlgorithm.population.front());
         
-//        if(evolutionaryAlgorithm.generationCount < 5000)
-//        {
+        if(evolutionaryAlgorithm.generationCount < 5000)
+        {
             evolutionaryAlgorithm.produceNextGeneration();
             evolutionaryAlgorithm.generationCount++;
-//        }
+        }
     }
 }
 
@@ -25,7 +26,7 @@ void ofApp::draw(){
     voronoi.draw();
     
     // Update GUI
-    if(evolutionaryAlgorithm.evolutionStarted){
+    if(evolutionaryAlgorithm.evolutionRunning){
         gui.currentGenerationNumberLabel->setLabel("Current generation: " + ofToString(evolutionaryAlgorithm.generationCount));
         gui.bestFitnessLabel->setLabel("Best fitness: " + ofToString(evolutionaryAlgorithm.population.front().fitness));
         gui.avgFitnessLabel->setLabel("Average fitness: " + ofToString(evolutionaryAlgorithm.getAverageFitness()));
@@ -36,14 +37,7 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    if(key == 32){
-        if(evolutionaryAlgorithm.evolutionStarted){
-            evolutionaryAlgorithm.evolutionStarted = false;
-        }else{
-            evolutionaryAlgorithm.evolutionStarted = true;
-            
-        }
-    }
+ 
 }
 
 //--------------------------------------------------------------

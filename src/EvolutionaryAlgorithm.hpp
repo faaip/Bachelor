@@ -24,7 +24,7 @@ public:
     void calculateFitness(Genome* g);
     void startEvolution();
     bool hasHigherFitness(Genome x, Genome y);
-    bool evolutionStarted = false;
+    bool evolutionRunning = false;
     void setCrossoverType(int t);
     void setMutationType(int t);
 
@@ -38,7 +38,6 @@ public:
     int mutationType = 0;
     int crossoverType = 0;
     float mutationProbability = 0.1;
-
 };
 
 #endif /* EvolutionaryAlgorithm_hpp */

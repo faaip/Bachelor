@@ -26,7 +26,7 @@ void EvolutionaryAlgorithm::initializePopulation(){
 }
 
 void EvolutionaryAlgorithm::startEvolution(){
-    evolutionStarted = true;
+    evolutionRunning = true;
     
     // Initialisaasi
     initializePopulation();

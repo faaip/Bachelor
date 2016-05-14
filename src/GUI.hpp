@@ -20,6 +20,7 @@ public:
     // Methods
     GUI();
     void setup(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlgorithm);
+    void disableElements();
 
     // Event listeners
     void onButtonEvent(ofxDatGuiButtonEvent e);
@@ -29,7 +30,9 @@ public:
     // GUI Elements
     ofxDatGui* gui; // GUI Element
     ofxDatGuiSlider* populationSizeSlider;
+    ofxDatGuiLabel* populationSizelabel;
     ofxDatGuiDropdown* crossoverDropdown;
+    ofxDatGuiLabel* crossoverLabel;
     ofxDatGuiDropdown* fitnessFunctionsDropdown;
     ofxDatGuiToggle* showCenterPointsToggle;
     ofxDatGuiToggle* showTessellationMeshToggle;
@@ -37,10 +40,16 @@ public:
     ofxDatGuiLabel* avgFitnessLabel;
     ofxDatGuiLabel* currentGenerationNumberLabel;
     ofxDatGuiButton* startButton;
+    ofxDatGuiButton* pauseButton;
 
     // Variables
     class Voronoi* voronoi; // Voronoi pointer
     EvolutionaryAlgorithm* evolutionaryAlgorithm; // Pointer to evolutionary algorithm
+    
+    vector<string> crossover = {"Single point crossover", "Two point crossover"};
+    vector<string> mutations = {"Bit string mutation"};
+    vector<string> fitnessFunctionChoices = {"1","2","3"};
+    vector<string> tessellationTypes = {"Flat surface","Cylinder","Sphere","Cone"};
 };
 
 #endif /* GUI_hpp */

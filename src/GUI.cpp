@@ -9,25 +9,23 @@
 #include "GUI.hpp"
 
 GUI::GUI(){
-    vector<string> crossover = {"Single point crossover", "Two point crossover"};
-    vector<string> mutations = {"Bit string mutation"};
-    vector<string> fitnessFunctionChoices = {"1","2","3"};
-    vector<string> tessellationTypes = {"Flat surface","Cylinder","Sphere","Cone"};
-
-    
     // Add stuff to gui
     gui = new ofxDatGui( ofxDatGuiAnchor::TOP_LEFT );
     gui->addHeader(" ::: Evolutionary Voronoi Tessellation :::"); // Header
     populationSizeSlider = gui->addSlider("Population size", 10, 250);
+    populationSizelabel = gui->addLabel("");
+    populationSizelabel->setVisible(false);
     crossoverDropdown = gui->addDropdown("Crossover", crossover);
+    crossoverLabel = gui->addLabel("Crossvaddv");
+    crossoverLabel->setVisible(false);
     fitnessFunctionsDropdown = gui->addDropdown("Fitness", fitnessFunctionChoices);
     showCenterPointsToggle = gui->addToggle("Show center points");
     showTessellationMeshToggle = gui->addToggle("Show tessellation");
     bestFitnessLabel = gui->addLabel("Best fitness: ");
     avgFitnessLabel = gui->addLabel("Average fitness: ");
     currentGenerationNumberLabel = gui->addLabel("Current generation: ");
-    gui->addFRM(); // Framerate monitor
     startButton = gui->addButton("Start evolution!");
+    
     gui->addFooter(); // Footer for collapsing
     
     // Add event listeners
@@ -51,6 +49,7 @@ void GUI::setup(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlgorithm){
 
 void GUI::onButtonEvent(ofxDatGuiButtonEvent e){
     if(e.target == startButton){
+        disableElements();
         evolutionaryAlgorithm->startEvolution();
     }
     
@@ -63,9 +62,18 @@ void GUI::onButtonEvent(ofxDatGuiButtonEvent e){
         
     }
     
+    if(e.target == pauseButton){
+        if(evolutionaryAlgorithm->evolutionRunning){
+            evolutionaryAlgorithm->evolutionRunning = false;
+            pauseButton->setLabel("Pause evolution");
+        }else{
+            evolutionaryAlgorithm->evolutionRunning = true;
+            pauseButton->setLabel("Continue evolution");
+        }
+    }
 }
 
-void GUI::onDropdownEvent(ofxDatGuiDropdownEvent e){    
+void GUI::onDropdownEvent(ofxDatGuiDropdownEvent e){
     // Set type of crossover
     if(e.target == crossoverDropdown){
         evolutionaryAlgorithm->crossoverType = e.child;
@@ -73,7 +81,22 @@ void GUI::onDropdownEvent(ofxDatGuiDropdownEvent e){
     
 }
 
-
+void GUI::disableElements(){
+    // Turns sliders in to labels (and so on)
+    crossoverDropdown->setVisible(false);
+    crossoverLabel->setLabel(crossover.at(evolutionaryAlgorithm->crossoverType));
+    crossoverLabel->setVisible(true);
+    
+    populationSizeSlider->setVisible(false);
+    populationSizelabel->setLabel(ofToString(evolutionaryAlgorithm->populationSize));
+    populationSizelabel->setVisible(true);
+    
+    gui->addFRM(); // Framerate monitor
+    startButton->setVisible(false);
+    pauseButton = gui->addButton("Pause evolution");
+    pauseButton->onButtonEvent(this, &GUI::onButtonEvent);
+    
+}
 
 
 void GUI::onSliderEvent(ofxDatGuiSliderEvent e){
