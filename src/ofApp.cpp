@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    gui.setup(&voronoi,&evolutionaryAlgorithm);
+    gui.setupStartGUI(&voronoi,&evolutionaryAlgorithm);
 }
 
 //--------------------------------------------------------------

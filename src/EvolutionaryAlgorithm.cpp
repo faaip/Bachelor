@@ -18,7 +18,7 @@ EvolutionaryAlgorithm::EvolutionaryAlgorithm(){
 void EvolutionaryAlgorithm::initializePopulation(){
     // Initializes the population with random genomes
     for(int i = 0; i<populationSize; i++ ){
-        Genome genome = Genome();
+        Genome genome = Genome(genomeSize);
         genome.randomizeChromosome();
         population.push_back(genome);
     }
@@ -27,6 +27,7 @@ void EvolutionaryAlgorithm::initializePopulation(){
 
 void EvolutionaryAlgorithm::startEvolution(){
     evolutionRunning = true;
+    evolutionStarted = true;
     
     // Initialisaasi
     initializePopulation();
@@ -50,6 +51,7 @@ void EvolutionaryAlgorithm::produceNextGeneration(){
     // Kilde om forskellige selektioner: http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.140.3747
     
     vector<Genome> newPopulation;
+    
     
     evaluatePopulation();
     
@@ -100,28 +102,28 @@ void EvolutionaryAlgorithm::produceNextGeneration(){
         // Crossover only happens x % of the time
         if(ofRandom(1) < crossoverProbability){
             // switch case for different kinds of crossover
-            Genome child;
+            Genome child(genomeSize);
             switch ( crossoverType ) {
                 case 0:
                     // Singlepoint
                     child = mother->singlePointCrossover(*father);
-                    if(ofRandom(1)<mutationProbability)child.mutate();
+                    if(ofRandom(1)<mutationProbability)child.mutate(mutationRate);
                     newPopulation.push_back(child);
                     break;
                 case 1:
                     // Two-point crossover
                     child = mother->twoPointCrossover(*father);
-                    if(ofRandom(1)<mutationProbability)child.mutate();
+                    if(ofRandom(1)<mutationProbability)child.mutate(mutationRate);
                     newPopulation.push_back(child);
                     break;
             }
         }else{
             // Parents enter the mix and are mutated
             if(ofRandom(1)<0.5){
-                mother->mutate();
+                mother->mutate(mutationRate);
                 newPopulation.push_back(*mother);
             }else{
-                father->mutate();
+                father->mutate(mutationRate);
                 newPopulation.push_back(*father);
             }
         }

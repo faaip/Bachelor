@@ -32,8 +32,9 @@ public:
     vector<ofVboMesh>  cellMeshes;
     vector<ofVboMesh>  cellMeshWireframes;
     
-    bool isShowingPoints = true;
+    bool isShowingPoints = false;
     bool isShowingMesh = true;
+    bool isRendering = true;
     int tessellationType = 0;
 };
 

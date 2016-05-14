@@ -13,10 +13,8 @@ Voronoi::Voronoi(){
     ofEnableAlphaBlending();
     ofSetVerticalSync(true);
     ofEnableSmoothing();
-    light.setPosition(100,500, 100);
-    cam.setAutoDistance(true);
-    
-    
+   // light.setPosition(100,500, 100);
+    cam.setDistance(1500);
 }
 
 void Voronoi::update(){
@@ -24,6 +22,7 @@ void Voronoi::update(){
 }
 
 void Voronoi::draw(){
+    if(isRendering){
     ofBackgroundGradient(ofColor(255), ofColor(170), OF_GRADIENT_CIRCULAR);
     ofPushMatrix();
     cam.begin();
@@ -59,6 +58,7 @@ void Voronoi::draw(){
     light.disable();
     cam.end();
     ofPopMatrix();
+    }
 }
 
 void Voronoi::createPhenotype(Genome genome){
@@ -91,7 +91,7 @@ void Voronoi::createPhenotype(Genome genome){
     
     for(int i = 0; i < genome.chromosome.size(); i++){
         addCellSeed(con, genome.chromosome.at(i), i, true);
-
+        
     }
     
     

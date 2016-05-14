@@ -19,31 +19,53 @@ class GUI{
 public:
     // Methods
     GUI();
-    void setup(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlgorithm);
     void disableElements();
     void updateGraph(float input);
+    void setupStartGUI(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlgorithm);
+    void setupRunGUI();
 
     // Event listeners
     void onButtonEvent(ofxDatGuiButtonEvent e);
     void onSliderEvent(ofxDatGuiSliderEvent e);
     void onDropdownEvent(ofxDatGuiDropdownEvent e);
 
-    // GUI Elements
-    ofxDatGui* gui; // GUI Element
+    // Start GUI Elements
+    ofxDatGui* guiStart; // GUI Element for start choices
     ofxDatGuiSlider* populationSizeSlider;
-    ofxDatGuiLabel* populationSizelabel;
-    ofxDatGuiDropdown* crossoverDropdown;
-    ofxDatGuiLabel* crossoverLabel;
+    ofxDatGuiSlider* genomeSizeSlider;
     ofxDatGuiDropdown* fitnessFunctionsDropdown;
-    ofxDatGuiToggle* showCenterPointsToggle;
-    ofxDatGuiToggle* showTessellationMeshToggle;
+    ofxDatGuiDropdown* crossoverDropdown;
+    ofxDatGuiSlider* crossoverProbability;
+    ofxDatGuiFolder* mutationFolder;
+    ofxDatGuiSlider* mutationRate;
+    ofxDatGuiSlider* mutationProbability;
+
+    ofxDatGuiButton* startButton;
+
+    
+    // Run GUI elements
+    ofxDatGui* guiRun; // GUI while running algorithm
+    ofxDatGuiFolder* parametersFolder;
+    ofxDatGuiLabel* populationSizelabel;
+    ofxDatGuiLabel* genomeSizeLabel;
+    ofxDatGuiLabel* fitnessTypeLabel;
+    ofxDatGuiLabel* crossoverLabel;
+    ofxDatGuiLabel* crossoverProbabilityLabel;
+    ofxDatGuiLabel* mutationRateLabel;
+    ofxDatGuiLabel* mutationProbabilityLabel;
+    
     ofxDatGuiLabel* bestFitnessLabel;
     ofxDatGuiLabel* avgFitnessLabel;
     ofxDatGuiLabel* currentGenerationNumberLabel;
-    ofxDatGuiButton* startButton;
     ofxDatGuiButton* pauseButton;
     ofxDatGuiValuePlotter* averageValuePlotter;
-
+    ofxDatGuiFolder* renderFolder;
+    ofxDatGuiToggle* renderingToggle;
+    ofxDatGuiToggle* showCenterPointsToggle;
+    ofxDatGuiToggle* showTessellationMeshToggle;
+    
+   
+    
     // Variables
     class Voronoi* voronoi; // Voronoi pointer
     EvolutionaryAlgorithm* evolutionaryAlgorithm; // Pointer to evolutionary algorithm

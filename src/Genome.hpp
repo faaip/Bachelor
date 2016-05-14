@@ -15,15 +15,15 @@
 class Genome{
 public:
     // Methods
-    Genome();
+    Genome(int genomeSize);
     void randomizeChromosome();
     Genome reproduce(Genome otherParent);
-    void mutate();
+    void mutate(float mutationRate);
     
     // Variables
     double fitness = 0;
     vector<ofPoint> chromosome;
-    float mutationRate = 0.1;
+    int genomeSize = 0;
 
     // Overload < operator
     bool operator<(Genome other) const

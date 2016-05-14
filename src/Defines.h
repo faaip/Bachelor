@@ -9,7 +9,6 @@
 #ifndef Defines_h
 #define Defines_h
 
-#define NUMBER_OF_POINTS 50
 #define _width 820
 #define _height 615
 #define _deep 35

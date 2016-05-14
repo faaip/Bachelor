@@ -25,17 +25,21 @@ public:
     void startEvolution();
     bool hasHigherFitness(Genome x, Genome y);
     bool evolutionRunning = false;
+    bool evolutionStarted = false;
     void setCrossoverType(int t);
     void setMutationType(int t);
 
     // Variables
     int populationSize = 30;
     int generationCount = 0;
+    int genomeSize = 25;
     int eliteCount = 2; //
-    float crossoverProbability = 0.75;
+    float crossoverProbability = 0.90;
     vector<Genome> population;
+    int fitnessType = 0;
     float getAverageFitness();
     int mutationType = 0;
+    float mutationRate = 0.15;
     int crossoverType = 0;
     float mutationProbability = 0.05;
 };
