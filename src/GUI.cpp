@@ -3,8 +3,6 @@
 //  Bachelor
 //
 //  Created by Frederik Tollund Juutilainen on 13/04/16.
-//
-//
 
 #include "GUI.hpp"
 
@@ -14,8 +12,7 @@ GUI::GUI(){
     gui->addHeader(" ::: Evolutionary Voronoi Tessellation :::"); // Header
     populationSizeSlider = gui->addSlider("Population size", 10, 250);
     populationSizeSlider->setPrecision(0);
-    populationSizelabel = gui->addLabel("");
-    populationSizelabel->setVisible(false);
+
     
     fitnessFunctionsDropdown = gui->addDropdown("Fitness", fitnessFunctionChoices);
     crossoverDropdown = gui->addDropdown("Crossover", crossover);
@@ -24,17 +21,14 @@ GUI::GUI(){
     bestFitnessLabel = gui->addLabel("Best fitness: ");
     avgFitnessLabel = gui->addLabel("Average fitness: ");
     currentGenerationNumberLabel = gui->addLabel("Current generation: ");
-
-    // Start button turns into pause button
     startButton = gui->addButton("Start evolution!");
+    
     pauseButton = gui->addButton("Pause evolution");
     pauseButton->setVisible(false);
     pauseButton->onButtonEvent(this, &GUI::onButtonEvent);
     
-    // Footer for collapsing
-    gui->addFooter();
+    gui->addFooter(); // Footer for collapsing
     
-    // Value plotter
     averageValuePlotter = gui->addValuePlotter("Average fitness", 0, 2000);
     averageValuePlotter->setDrawMode(ofxDatGuiGraph::LINES);
     averageValuePlotter->setSpeed(0);
