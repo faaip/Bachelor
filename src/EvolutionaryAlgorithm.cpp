@@ -144,10 +144,10 @@ void EvolutionaryAlgorithm::calculateFitness(Genome* g){
 
 float EvolutionaryAlgorithm::getAverageFitness(){
     double sum = 0;
-    for (vector<Genome>::iterator g= population.begin(); g!=population.end(); g++){
-        sum += g->fitness;
+    
+    for(auto & genome : population){
+        sum += genome.fitness;
     }
     
     return sum/population.size();
-    
 }

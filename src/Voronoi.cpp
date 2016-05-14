@@ -72,7 +72,7 @@ void Voronoi::createPhenotype(Genome genome){
                         -_height,_height,
                         -_deep,_deep,
                         1,1,1,
-                        false,false,false,
+                        false,false,true, // VIGTIGT!!
                         8);
     
     
