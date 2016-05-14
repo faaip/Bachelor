@@ -24,6 +24,7 @@ public:
     void setupStartGUI(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlgorithm);
     void setupRunGUI();
 
+
     // Event listeners
     void onButtonEvent(ofxDatGuiButtonEvent e);
     void onSliderEvent(ofxDatGuiSliderEvent e);
@@ -36,12 +37,16 @@ public:
     ofxDatGuiDropdown* fitnessFunctionsDropdown;
     ofxDatGuiDropdown* crossoverDropdown;
     ofxDatGuiSlider* crossoverProbability;
+    ofxDatGuiFolder* dimensionConstraints;
+    ofxDatGuiToggle* widthConstraintToggle;
+    ofxDatGuiToggle* heightConstraintToggle;
+    ofxDatGuiToggle* depthConstraintToggle;
     ofxDatGuiFolder* mutationFolder;
     ofxDatGuiSlider* mutationRate;
     ofxDatGuiSlider* mutationProbability;
-
     ofxDatGuiButton* startButton;
-
+    ofxDatGuiButton* resetButton;
+    
     
     // Run GUI elements
     ofxDatGui* guiRun; // GUI while running algorithm

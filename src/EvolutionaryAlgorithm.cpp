@@ -17,6 +17,7 @@ EvolutionaryAlgorithm::EvolutionaryAlgorithm(){
 
 void EvolutionaryAlgorithm::initializePopulation(){
     // Initializes the population with random genomes
+    population.clear();
     for(int i = 0; i<populationSize; i++ ){
         Genome genome = Genome(genomeSize);
         genome.randomizeChromosome();

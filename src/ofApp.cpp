@@ -11,7 +11,7 @@ void ofApp::update(){
       
         voronoi.createPhenotype(evolutionaryAlgorithm.population.front());
         
-        if(evolutionaryAlgorithm.generationCount < 5000)
+        if(evolutionaryAlgorithm.generationCount < 5000000)
         {
             evolutionaryAlgorithm.produceNextGeneration();
             evolutionaryAlgorithm.generationCount++;

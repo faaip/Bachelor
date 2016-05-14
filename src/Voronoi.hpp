@@ -22,6 +22,7 @@ public:
     void draw();
     void setup();
     void createPhenotype(Genome genome);
+    void clear();
         
     // Rendering stuff
     ofEasyCam   cam;
@@ -35,6 +36,9 @@ public:
     bool isShowingPoints = false;
     bool isShowingMesh = true;
     bool isRendering = true;
+    bool widthConstraint = false;
+    bool heightConstraint = false;
+    bool depthConstraint = true;
     int tessellationType = 0;
 };
 

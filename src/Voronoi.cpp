@@ -21,12 +21,18 @@ void Voronoi::update(){
     
 }
 
+void Voronoi::clear(){
+    cellMeshes.clear();
+    cellCentroids.clear();
+    cellRadius.clear();
+}
+
 void Voronoi::draw(){
     if(isRendering){
     ofBackgroundGradient(ofColor(255), ofColor(170), OF_GRADIENT_CIRCULAR);
     ofPushMatrix();
     cam.begin();
-    light.enable();
+//    light.enable();
     ofEnableLighting();
     glEnable(GL_DEPTH_TEST);
     
@@ -72,7 +78,7 @@ void Voronoi::createPhenotype(Genome genome){
                         -_height,_height,
                         -_deep,_deep,
                         1,1,1,
-                        false,false,true, // VIGTIGT!!
+                        widthConstraint,heightConstraint,depthConstraint, // VIGTIGT!!
                         8);
     
     

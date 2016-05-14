@@ -23,6 +23,12 @@ void GUI::setupStartGUI(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlg
     populationSizeSlider->setPrecision(0);
     populationSizeSlider->setValue(evolutionaryAlgorithm->populationSize);
     
+    // Dimensional constraints
+    dimensionConstraints = guiStart->addFolder("Dimensional Constraints");
+    widthConstraintToggle = dimensionConstraints->addToggle("Width",!voronoi->widthConstraint);
+    heightConstraintToggle = dimensionConstraints->addToggle("Height",!voronoi->heightConstraint);
+    depthConstraintToggle = dimensionConstraints->addToggle("Depth",!voronoi->depthConstraint);
+    
     // Genome size
     genomeSizeSlider = guiStart->addSlider("Genome Size", 5, 500);
     genomeSizeSlider->setPrecision(0);
@@ -56,6 +62,9 @@ void GUI::setupStartGUI(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlg
     mutationRate->onSliderEvent(this, &GUI::onSliderEvent);
     mutationProbability->onSliderEvent(this, &GUI::onSliderEvent);
     startButton->onButtonEvent(this, &GUI::onButtonEvent);
+    widthConstraintToggle->onButtonEvent(this, &GUI::onButtonEvent);
+    heightConstraintToggle->onButtonEvent(this, &GUI::onButtonEvent);
+    depthConstraintToggle->onButtonEvent(this, &GUI::onButtonEvent);
 }
 
 void GUI::setupRunGUI(){
@@ -69,7 +78,7 @@ void GUI::setupRunGUI(){
     renderFolder = guiRun->addFolder("Rendering");
     renderingToggle = renderFolder->addToggle("Show rendering",voronoi->isRendering);
     showCenterPointsToggle = renderFolder->addToggle("Show center points",voronoi->isShowingPoints);
-    showTessellationMeshToggle = renderFolder->addToggle("Show tessellation",voronoi->isShowingPoints);
+    showTessellationMeshToggle = renderFolder->addToggle("Show tessellation",true);
     
     parametersFolder = guiRun->addFolder("Evolutionary parameters");
     populationSizelabel = parametersFolder->addLabel(ofToString("Population size: " + ofToString(evolutionaryAlgorithm->populationSize)));
@@ -88,14 +97,15 @@ void GUI::setupRunGUI(){
     averageValuePlotter->setDrawMode(ofxDatGuiGraph::LINES);
 
     pauseButton = guiRun->addButton("Pause evolution");
+    resetButton = guiRun->addButton(">>> RESET <<<");
     
     // Add event listeners
     renderingToggle->onButtonEvent(this,&GUI::onButtonEvent);
     showCenterPointsToggle->onButtonEvent(this, &GUI::onButtonEvent);
     showTessellationMeshToggle->onButtonEvent(this, &GUI::onButtonEvent);
     
-    
     pauseButton->onButtonEvent(this, &GUI::onButtonEvent);
+    resetButton->onButtonEvent(this, &GUI::onButtonEvent);
     
     guiRun->addFooter(); // Footer for collapsing
     
@@ -108,18 +118,44 @@ void GUI::onButtonEvent(ofxDatGuiButtonEvent e){
         evolutionaryAlgorithm->startEvolution();
     }
     
+    if(e.target == resetButton){
+        // Resets
+        evolutionaryAlgorithm->evolutionStarted = false;
+        evolutionaryAlgorithm->evolutionRunning = false;
+        evolutionaryAlgorithm->population.clear(); // Clearing population
+        evolutionaryAlgorithm->generationCount = 0;
+        voronoi->clear();
+        guiRun->setEnabled(false);
+        guiRun->setVisible(false);
+        guiStart->setEnabled(true);
+        guiStart->setVisible(true);
+        
+    }
+    
     if(e.target == showCenterPointsToggle){
         voronoi->isShowingPoints = showCenterPointsToggle->getEnabled();
     }
     
     if(e.target == showTessellationMeshToggle){
         voronoi->isShowingMesh = showTessellationMeshToggle->getEnabled();
-        
     }
     
     if(e.target == renderingToggle){
         voronoi->isShowingMesh = renderingToggle->getEnabled();
     }
+    
+    if(e.target == widthConstraintToggle){
+        voronoi->widthConstraint = !widthConstraintToggle->getEnabled();
+    }
+    
+    if(e.target == heightConstraintToggle){
+        voronoi->heightConstraint = !heightConstraintToggle->getEnabled();
+    }
+    
+    if(e.target == depthConstraintToggle){
+        voronoi->depthConstraint = !depthConstraintToggle->getEnabled();
+    }
+    
     
     if(e.target == pauseButton){
         if(evolutionaryAlgorithm->evolutionRunning){
