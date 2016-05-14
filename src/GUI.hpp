@@ -21,6 +21,7 @@ public:
     GUI();
     void setup(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlgorithm);
     void disableElements();
+    void updateGraph(float input);
 
     // Event listeners
     void onButtonEvent(ofxDatGuiButtonEvent e);
@@ -41,6 +42,7 @@ public:
     ofxDatGuiLabel* currentGenerationNumberLabel;
     ofxDatGuiButton* startButton;
     ofxDatGuiButton* pauseButton;
+    ofxDatGuiValuePlotter* averageValuePlotter;
 
     // Variables
     class Voronoi* voronoi; // Voronoi pointer

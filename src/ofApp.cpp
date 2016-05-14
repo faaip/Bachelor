@@ -31,7 +31,8 @@ void ofApp::draw(){
         gui.bestFitnessLabel->setLabel("Best fitness: " + ofToString(evolutionaryAlgorithm.population.front().fitness));
         gui.avgFitnessLabel->setLabel("Average fitness: " + ofToString(evolutionaryAlgorithm.getAverageFitness()));
     }
-    
+    gui.updateGraph(evolutionaryAlgorithm.getAverageFitness());
+
 }
 
 

@@ -116,10 +116,12 @@ void EvolutionaryAlgorithm::produceNextGeneration(){
                     break;
             }
         }else{
-            // Parents enter the mix
+            // Parents enter the mix and are mutated
             if(ofRandom(1)<0.5){
+                mother->mutate();
                 newPopulation.push_back(*mother);
             }else{
+                father->mutate();
                 newPopulation.push_back(*father);
             }
         }
