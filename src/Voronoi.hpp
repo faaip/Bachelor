@@ -21,9 +21,9 @@ public:
     void update();
     void draw();
     void setup();
-    void createPhenotype(Genome* genome);
+    voro::container createPhenotype(Genome* genome);
     void clear();
-    double calculateFitness(Genome* genome);
+    double calculateFitness(Genome* genome, int fitnessType);
         
     // Rendering stuff
     ofEasyCam   cam;

@@ -82,7 +82,7 @@ public:
     
     vector<string> crossover = {"Single point crossover", "Two point crossover", "Uniform crossover"};
     vector<string> mutations = {"Bit string mutation"};
-    vector<string> fitnessFunctionChoices = {"1","2","3"};
+    vector<string> fitnessFunctionChoices = {"Evenly sized cells","Neighbor depth contrast"};
     vector<string> tessellationTypes = {"Flat surface","Cylinder","Sphere","Cone"};
 };
 
