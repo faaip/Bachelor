@@ -14,6 +14,7 @@
 #include "Voronoi.hpp"
 #include "EvolutionaryAlgorithm.hpp"
 #include "ofxDatGui.h"
+#include "Genome.hpp"
 
 class GUI{
 public:

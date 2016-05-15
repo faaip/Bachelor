@@ -33,15 +33,15 @@ void GUI::setupStartGUI(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlg
     dimensionsFolder = guiStart->addFolder("Dimension size");
     widthSlider = dimensionsFolder->addSlider("Width: ", 100, 1000);
     widthSlider->setPrecision(0);
-    widthSlider->setValue(820);
+    widthSlider->setValue(evolutionaryAlgorithm->dimensions.x);
     
     heightSlider = dimensionsFolder->addSlider("Height: ", 100, 1000);
     heightSlider->setPrecision(0);
-    heightSlider->setValue(615);
+    heightSlider->setValue(evolutionaryAlgorithm->dimensions.y);
     
     depthSlider = dimensionsFolder->addSlider("Depth: ", 1, 1000);
     depthSlider->setPrecision(0);
-    depthSlider->setValue(35);
+    depthSlider->setValue(evolutionaryAlgorithm->dimensions.z);
     
     // Genome size
     genomeSizeSlider = guiStart->addSlider("Genome Size", 5, 500);
@@ -131,6 +131,8 @@ void GUI::setupRunGUI(){
 
 void GUI::onButtonEvent(ofxDatGuiButtonEvent e){
     if(e.target == startButton){
+        voronoi->dimensions = ofVec3f(widthSlider->getValue(),heightSlider->getValue(),depthSlider->getValue());
+        evolutionaryAlgorithm->dimensions = ofVec3f(widthSlider->getValue(),heightSlider->getValue(),depthSlider->getValue());
         setupRunGUI();
         evolutionaryAlgorithm->startEvolution();
     }
@@ -231,14 +233,18 @@ void GUI::onSliderEvent(ofxDatGuiSliderEvent e){
     }
     
     if(e.target == widthSlider){
-        
+        evolutionaryAlgorithm->dimensions.x = e.value;
+        voronoi->dimensions.x = e.value;
+
     }
     
     if(e.target == heightSlider){
-        
+        evolutionaryAlgorithm->dimensions.y = e.value;
+        voronoi->dimensions.y = e.value;
     }
     
     if(e.target == depthSlider){
-        
+        evolutionaryAlgorithm->dimensions.z = e.value;
+        voronoi->dimensions.z = e.value;
     }
 }

@@ -17,9 +17,12 @@ EvolutionaryAlgorithm::EvolutionaryAlgorithm(){
 
 void EvolutionaryAlgorithm::initializePopulation(){
     // Initializes the population with random genomes
+    
+
+    
     population.clear();
     for(int i = 0; i<populationSize; i++ ){
-        Genome genome = Genome(genomeSize);
+        Genome genome = Genome(genomeSize,dimensions);
         genome.randomizeChromosome();
         population.push_back(genome);
     }
@@ -103,7 +106,7 @@ void EvolutionaryAlgorithm::produceNextGeneration(){
         // Crossover only happens x % of the time
         if(ofRandom(1) < crossoverProbability){
             // switch case for different kinds of crossover
-            Genome child(genomeSize);
+            Genome child(genomeSize,dimensions);
             switch ( crossoverType ) {
                 case 0:
                     // Singlepoint

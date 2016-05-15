@@ -74,9 +74,9 @@ void Voronoi::createPhenotype(Genome genome){
     cellRadius.clear();
     
     //  Define a container
-    voro::container con(-_width,_width,
-                        -_height,_height,
-                        -_deep,_deep,
+    voro::container con(-dimensions.x,dimensions.x,
+                        -dimensions.y,dimensions.y,
+                        -dimensions.z,dimensions.z,
                         1,1,1,
                         widthConstraint,heightConstraint,depthConstraint, // VIGTIGT!!
                         8);
@@ -84,13 +84,13 @@ void Voronoi::createPhenotype(Genome genome){
     
     // Add walls depending on choice in GUI
     if(tessellationType == 1){
-        voro::wall_cylinder cyl(0,0,0,0,0,20, min(_width, _height));
+        voro::wall_cylinder cyl(0,0,0,0,0,20, min(dimensions.x, dimensions.y));
         con.add_wall(cyl);
     }else if (tessellationType == 2){
-        voro::wall_sphere sph(0, 0, 0, min(_width, _height) );
+        voro::wall_sphere sph(0, 0, 0, min(dimensions.x, dimensions.y) );
         con.add_wall(sph);
     }else if (tessellationType == 3){
-        voro::wall_cone cone(0,0,min(_width, _height),0,0,-1,atan(0.5));
+        voro::wall_cone cone(0,0,min(dimensions.x, dimensions.y),0,0,-1,atan(0.5));
         con.add_wall(cone);
     }
     

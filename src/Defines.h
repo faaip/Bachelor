@@ -9,8 +9,8 @@
 #ifndef Defines_h
 #define Defines_h
 
-#define _width 820
-#define _height 615
-#define _deep 35
+//#define _width 820
+//#define _height 615
+//#define _deep 35
 
 #endif /* Defines_h */

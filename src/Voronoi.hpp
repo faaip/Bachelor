@@ -40,6 +40,9 @@ public:
     bool heightConstraint = false;
     bool depthConstraint = true;
     int tessellationType = 0;
+    
+    // dimensions
+    ofVec3f dimensions;
 };
 
 #endif /* Voronoi_hpp */

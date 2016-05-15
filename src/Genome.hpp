@@ -15,7 +15,7 @@
 class Genome{
 public:
     // Methods
-    Genome(int genomeSize);
+    Genome(int genomeSize, ofVec3f d);
     void randomizeChromosome();
     Genome reproduce(Genome otherParent);
     void mutate(float mutationRate);
@@ -37,7 +37,8 @@ public:
     
     // Mutation
     
-
+    // Dimensions size
+    ofVec3f dimensions;
     
 };
 

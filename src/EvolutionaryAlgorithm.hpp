@@ -28,7 +28,7 @@ public:
     bool evolutionStarted = false;
     void setCrossoverType(int t);
     void setMutationType(int t);
-
+    
     // Variables
     int populationSize = 30;
     int generationCount = 0;
@@ -42,6 +42,9 @@ public:
     float mutationRate = 0.15;
     int crossoverType = 0;
     float mutationProbability = 0.05;
+    
+    // Dimensions
+    ofVec3f dimensions = ofVec3f(615,820,15);
 };
 
 #endif /* EvolutionaryAlgorithm_hpp */

@@ -8,23 +8,24 @@
 
 #include "Genome.hpp"
 
-Genome::Genome(int genomeSize){
+Genome::Genome(int genomeSize, ofVec3f d){
     this->genomeSize = genomeSize;
+    this->dimensions = d;
 }
 
 void Genome::randomizeChromosome(){
     chromosome.clear();
     for(int i = 0; i < genomeSize;i++){
-        ofPoint newCell = ofPoint(ofRandom(-_width,_width),
-                                  ofRandom(-_height,_height),
-                                  ofRandom(-_deep,_deep));
+        ofPoint newCell = ofPoint(ofRandom(-dimensions.x,dimensions.x),
+                                  ofRandom(-dimensions.y,dimensions.y),
+                                  ofRandom(-dimensions.z,dimensions.z));
         chromosome.push_back(newCell);
     }
 }
 
 Genome Genome::singlePointCrossover(Genome otherParent){
     // Reproducing using single-point crossover
-    Genome child = Genome(genomeSize);
+    Genome child = Genome(genomeSize,this->dimensions);
     
     int r = ofRandom(0,genomeSize); // random single point
     
@@ -40,7 +41,7 @@ Genome Genome::singlePointCrossover(Genome otherParent){
 
 Genome Genome::twoPointCrossover(Genome otherParent){
     // Reproducing using two-point crossover
-    Genome child = Genome(genomeSize);
+    Genome child = Genome(genomeSize,this->dimensions);
     
     int r1 = ofRandom(0,genomeSize);
     int r2 = ofRandom(0,genomeSize);
@@ -72,9 +73,9 @@ Genome Genome::twoPointCrossover(Genome otherParent){
 void Genome::mutate(float mutationRate){
     for(auto & p : this->chromosome){
         if(ofRandom(1)<mutationRate){
-        p.x =ofRandom(-_width,_width);
-        p.y = ofRandom(-_height,_width);
-        p.z = ofRandom(-_deep,_deep);
+            p.x =ofRandom(-dimensions.x,dimensions.x);
+            p.y = ofRandom(-dimensions.y,dimensions.y);
+            p.z = ofRandom(-dimensions.z,dimensions.z);
         }
     }
 }
