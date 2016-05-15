@@ -15,9 +15,9 @@ Genome::Genome(int genomeSize){
 void Genome::randomizeChromosome(){
     chromosome.clear();
     for(int i = 0; i < genomeSize;i++){
-        ofPoint newCell = ofPoint(ofRandom(-1,1),
-                                  ofRandom(-1,1),
-                                  ofRandom(-1,1));
+        ofPoint newCell = ofPoint(ofRandom(-_width,_width),
+                                  ofRandom(-_height,_height),
+                                  ofRandom(-_deep,_deep));
         chromosome.push_back(newCell);
     }
 }
