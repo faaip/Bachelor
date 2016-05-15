@@ -97,7 +97,6 @@ void Voronoi::createPhenotype(Genome genome){
     
     for(int i = 0; i < genome.chromosome.size(); i++){
         addCellSeed(con, genome.chromosome.at(i), i, true);
-        
     }
     
     

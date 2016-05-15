@@ -23,8 +23,8 @@ void Genome::randomizeChromosome(){
     }
 }
 
-Genome Genome::singlePointCrossover(Genome otherParent){
-    // Reproducing using single-point crossover
+Genome Genome::singlePointCrossover(Genome* otherParent){
+    // Crossover using single-point crossover
     Genome child = Genome(genomeSize,this->dimensions);
     
     int r = ofRandom(0,genomeSize); // random single point
@@ -34,12 +34,12 @@ Genome Genome::singlePointCrossover(Genome otherParent){
     }
     
     for(int i = r; i < genomeSize; i++){
-        child.chromosome.push_back(otherParent.chromosome.at(i)); // from other parent
+        child.chromosome.push_back(otherParent->chromosome.at(i)); // from other parent
     }
     return child;
 }
 
-Genome Genome::twoPointCrossover(Genome otherParent){
+Genome Genome::twoPointCrossover(Genome* otherParent){
     // Reproducing using two-point crossover
     Genome child = Genome(genomeSize,this->dimensions);
     
@@ -58,7 +58,7 @@ Genome Genome::twoPointCrossover(Genome otherParent){
     
     // From father
     for(int i = r1; i < r2; i++){
-        child.chromosome.push_back(otherParent.chromosome.at(i));
+        child.chromosome.push_back(otherParent->chromosome.at(i));
     }
     
     // From mother (again)
@@ -70,12 +70,32 @@ Genome Genome::twoPointCrossover(Genome otherParent){
     return child;
 }
 
+Genome Genome::uniformCrossover(Genome* otherParent){
+    // Crossover using uniform crossover
+    Genome child = Genome(genomeSize,this->dimensions);
+    
+    for(int i = 0; i < genomeSize;i++){
+        if(ofRandom(1)>0.5){
+            child.chromosome.push_back(this->chromosome.at(i));
+        }else{
+            child.chromosome.push_back(otherParent->chromosome.at(i));
+        }
+    }
+   
+    return child;
+    
+}
+
 void Genome::mutate(float mutationRate){
     for(auto & p : this->chromosome){
         if(ofRandom(1)<mutationRate){
             p.x =ofRandom(-dimensions.x,dimensions.x);
-            p.y = ofRandom(-dimensions.y,dimensions.y);
-            p.z = ofRandom(-dimensions.z,dimensions.z);
+        }
+        if(ofRandom(1)<mutationRate){
+            p.y =ofRandom(-dimensions.y,dimensions.y);
+        }
+        if(ofRandom(1)<mutationRate){
+            p.z =ofRandom(-dimensions.z,dimensions.z);
         }
     }
 }

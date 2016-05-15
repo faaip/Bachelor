@@ -62,9 +62,9 @@ void GUI::setupStartGUI(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlg
     mutationRate = mutationFolder->addSlider("Mutation rate",0,100,evolutionaryAlgorithm->mutationRate*100);
     mutationProbability = mutationFolder->addSlider("Mutation %", 0, 100, evolutionaryAlgorithm->mutationProbability*100);
     
+    
     // Start button
     startButton = guiStart->addButton("Start evolution!");
-    
     guiStart->addFooter(); // Footer for collapsing
     
     // Add event listeners
@@ -113,6 +113,7 @@ void GUI::setupRunGUI(){
     averageValuePlotter = guiRun->addValuePlotter("Average fitness", 0, 1000);
     averageValuePlotter->setDrawMode(ofxDatGuiGraph::LINES);
     
+    guiRun->addFRM();
     pauseButton = guiRun->addButton("Pause evolution");
     resetButton = guiRun->addButton(">>> RESET <<<");
     
@@ -200,11 +201,13 @@ void GUI::onDropdownEvent(ofxDatGuiDropdownEvent e){
 }
 
 
-void GUI::updateGraph(float input){
+void GUI::updateGraph(float average, float max){
     if(evolutionaryAlgorithm->evolutionStarted){
         if(evolutionaryAlgorithm->evolutionRunning){
             averageValuePlotter->setSpeed(1);
-            averageValuePlotter->setValue(input);
+            averageValuePlotter->setRange(0,max);
+            averageValuePlotter->setLabel("Average fitness: \nrange 0 to " + ofToString(max));
+            averageValuePlotter->setValue(average);
         }else{
             averageValuePlotter->setSpeed(0);
         }

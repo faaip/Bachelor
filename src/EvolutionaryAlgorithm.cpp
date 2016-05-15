@@ -110,13 +110,19 @@ void EvolutionaryAlgorithm::produceNextGeneration(){
             switch ( crossoverType ) {
                 case 0:
                     // Singlepoint
-                    child = mother->singlePointCrossover(*father);
+                    child = mother->singlePointCrossover(father);
                     if(ofRandom(1)<mutationProbability)child.mutate(mutationRate);
                     newPopulation.push_back(child);
                     break;
                 case 1:
                     // Two-point crossover
-                    child = mother->twoPointCrossover(*father);
+                    child = mother->twoPointCrossover(father);
+                    if(ofRandom(1)<mutationProbability)child.mutate(mutationRate);
+                    newPopulation.push_back(child);
+                    break;
+                case 2:
+                    // Uniform crossover
+                    child = mother->uniformCrossover(father);
                     if(ofRandom(1)<mutationProbability)child.mutate(mutationRate);
                     newPopulation.push_back(child);
                     break;
@@ -139,7 +145,6 @@ void EvolutionaryAlgorithm::produceNextGeneration(){
 void EvolutionaryAlgorithm::calculateFitness(Genome* g){
     // Reset fitness
     g->fitness = 0;
-    
     
     for(int i = 0; i < g->chromosome.size();i++){
         for(int j = 0; j < g->chromosome.size();j++){

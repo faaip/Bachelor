@@ -21,7 +21,7 @@ public:
     // Methods
     GUI();
     void disableElements();
-    void updateGraph(float input);
+    void updateGraph(float average, float max);
     void setupStartGUI(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlgorithm);
     void setupRunGUI();
 
@@ -80,7 +80,7 @@ public:
     class Voronoi* voronoi; // Voronoi pointer
     EvolutionaryAlgorithm* evolutionaryAlgorithm; // Pointer to evolutionary algorithm
     
-    vector<string> crossover = {"Single point crossover", "Two point crossover"};
+    vector<string> crossover = {"Single point crossover", "Two point crossover", "Uniform crossover"};
     vector<string> mutations = {"Bit string mutation"};
     vector<string> fitnessFunctionChoices = {"1","2","3"};
     vector<string> tessellationTypes = {"Flat surface","Cylinder","Sphere","Cone"};

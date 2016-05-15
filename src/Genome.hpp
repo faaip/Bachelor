@@ -32,8 +32,9 @@ public:
     };
     
     // Crossover
-    Genome singlePointCrossover(Genome otherParent);
-    Genome twoPointCrossover(Genome otherParent);
+    Genome singlePointCrossover(Genome* otherParent);
+    Genome twoPointCrossover(Genome* otherParent);
+    Genome uniformCrossover(Genome* otherParent);
     
     // Mutation
     
