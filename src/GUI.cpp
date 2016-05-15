@@ -29,6 +29,20 @@ void GUI::setupStartGUI(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlg
     heightConstraintToggle = dimensionConstraints->addToggle("Height",!voronoi->heightConstraint);
     depthConstraintToggle = dimensionConstraints->addToggle("Depth",!voronoi->depthConstraint);
     
+    // Dimensions size
+    dimensionsFolder = guiStart->addFolder("Dimension size");
+    widthSlider = dimensionsFolder->addSlider("Width: ", 100, 1000);
+    widthSlider->setPrecision(0);
+    widthSlider->setValue(820);
+    
+    heightSlider = dimensionsFolder->addSlider("Height: ", 100, 1000);
+    heightSlider->setPrecision(0);
+    heightSlider->setValue(615);
+    
+    depthSlider = dimensionsFolder->addSlider("Depth: ", 1, 1000);
+    depthSlider->setPrecision(0);
+    depthSlider->setValue(35);
+    
     // Genome size
     genomeSizeSlider = guiStart->addSlider("Genome Size", 5, 500);
     genomeSizeSlider->setPrecision(0);
@@ -65,6 +79,9 @@ void GUI::setupStartGUI(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlg
     widthConstraintToggle->onButtonEvent(this, &GUI::onButtonEvent);
     heightConstraintToggle->onButtonEvent(this, &GUI::onButtonEvent);
     depthConstraintToggle->onButtonEvent(this, &GUI::onButtonEvent);
+    widthSlider->onSliderEvent(this, &GUI::onSliderEvent);
+    heightSlider->onSliderEvent(this, &GUI::onSliderEvent);
+    depthSlider->onSliderEvent(this, &GUI::onSliderEvent);
 }
 
 void GUI::setupRunGUI(){
@@ -95,7 +112,7 @@ void GUI::setupRunGUI(){
     
     averageValuePlotter = guiRun->addValuePlotter("Average fitness", 0, 1000);
     averageValuePlotter->setDrawMode(ofxDatGuiGraph::LINES);
-
+    
     pauseButton = guiRun->addButton("Pause evolution");
     resetButton = guiRun->addButton(">>> RESET <<<");
     
@@ -205,13 +222,23 @@ void GUI::onSliderEvent(ofxDatGuiSliderEvent e){
         evolutionaryAlgorithm->crossoverProbability = e.value;
     }
     
-    if(e.target == mutationProbability)
-    {
+    if(e.target == mutationProbability){
         evolutionaryAlgorithm->mutationProbability = e.value/100;
     }
     
-    if(e.target == mutationRate)
-    {
+    if(e.target == mutationRate){
         evolutionaryAlgorithm->mutationRate = e.value/100;
+    }
+    
+    if(e.target == widthSlider){
+        
+    }
+    
+    if(e.target == heightSlider){
+        
+    }
+    
+    if(e.target == depthSlider){
+        
     }
 }

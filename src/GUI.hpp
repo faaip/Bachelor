@@ -47,6 +47,10 @@ public:
     ofxDatGuiButton* startButton;
     ofxDatGuiButton* resetButton;
     
+    ofxDatGuiFolder* dimensionsFolder;
+    ofxDatGuiSlider* widthSlider;
+    ofxDatGuiSlider* heightSlider;
+    ofxDatGuiSlider* depthSlider;
     
     // Run GUI elements
     ofxDatGui* guiRun; // GUI while running algorithm
