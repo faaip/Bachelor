@@ -11,11 +11,12 @@
 #include "ofMain.h"
 #include "Genome.hpp"
 #include "Defines.h"
+#include "Voronoi.hpp"
 
 class EvolutionaryAlgorithm{
 public:
     // Methods
-    EvolutionaryAlgorithm();
+    EvolutionaryAlgorithm(Voronoi* voroni);
     void initializePopulation();
     void evaluatePopulation();
     void produceNextGeneration();
@@ -40,6 +41,7 @@ public:
     float mutationRate = 0.15;
     int crossoverType = 0;
     float mutationProbability = 0.05;
+    Voronoi* voronoi;
     
     // Dimensions
     ofVec3f dimensions = ofVec3f(615,820,15);

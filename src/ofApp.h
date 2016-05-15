@@ -27,6 +27,6 @@ class ofApp : public ofBaseApp{
     
     GUI gui = GUI();
     Voronoi voronoi = Voronoi();
-    EvolutionaryAlgorithm evolutionaryAlgorithm = EvolutionaryAlgorithm();
+    EvolutionaryAlgorithm evolutionaryAlgorithm = EvolutionaryAlgorithm(&voronoi);
     
 };

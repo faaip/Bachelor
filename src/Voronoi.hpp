@@ -21,8 +21,9 @@ public:
     void update();
     void draw();
     void setup();
-    void createPhenotype(Genome genome);
+    void createPhenotype(Genome* genome);
     void clear();
+    double calculateFitness(Genome* genome);
         
     // Rendering stuff
     ofEasyCam   cam;

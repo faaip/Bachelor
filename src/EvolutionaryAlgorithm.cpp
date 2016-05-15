@@ -9,10 +9,8 @@
 #include "EvolutionaryAlgorithm.hpp"
 #include <cmath>
 
-EvolutionaryAlgorithm::EvolutionaryAlgorithm(){
-    
-    
-    
+EvolutionaryAlgorithm::EvolutionaryAlgorithm(Voronoi* voronoi){
+    this->voronoi = voronoi;
 }
 
 void EvolutionaryAlgorithm::initializePopulation(){
@@ -146,13 +144,17 @@ void EvolutionaryAlgorithm::calculateFitness(Genome* g){
     // Reset fitness
     g->fitness = 0;
     
-    for(int i = 0; i < g->chromosome.size();i++){
-        for(int j = 0; j < g->chromosome.size();j++){
-            if(!(i ==j)){
-                g->fitness += std::abs(g->chromosome.at(i).squareDistance(g->chromosome.at(j))/1000000);
-            }
-        }
-    }
+    g->fitness = voronoi->calculateFitness(g);
+    cout << g->fitness << endl;
+    
+//    for(int i = 0; i < g->chromosome.size();i++){
+//        for(int j = 0; j < g->chromosome.size();j++){
+//            if(!(i ==j)){
+//                g->fitness += std::abs(g->chromosome.at(i).squareDistance(g->chromosome.at(j))/1000000);
+//            }
+//        }
+//    }
+    
 }
 
 float EvolutionaryAlgorithm::getAverageFitness(){

@@ -9,7 +9,6 @@ void ofApp::setup(){
 void ofApp::update(){
     if(evolutionaryAlgorithm.evolutionRunning){
       
-        voronoi.createPhenotype(evolutionaryAlgorithm.population.front());
         
         if(evolutionaryAlgorithm.generationCount < 5000000)
         {
@@ -23,6 +22,9 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    if(evolutionaryAlgorithm.evolutionRunning){
+    voronoi.createPhenotype(&evolutionaryAlgorithm.population.front());
+    }
     voronoi.draw();
     
     // Update GUI

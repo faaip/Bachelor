@@ -67,7 +67,7 @@ void Voronoi::draw(){
     }
 }
 
-void Voronoi::createPhenotype(Genome genome){
+void Voronoi::createPhenotype(Genome* genome){
     //  Fresh begining
     cellMeshes.clear();
     cellCentroids.clear();
@@ -81,27 +81,23 @@ void Voronoi::createPhenotype(Genome genome){
                         widthConstraint,heightConstraint,depthConstraint, // VIGTIGT!!
                         8);
     
-    
-    // Add walls depending on choice in GUI
-    if(tessellationType == 1){
-        voro::wall_cylinder cyl(0,0,0,0,0,20, min(dimensions.x, dimensions.y));
-        con.add_wall(cyl);
-    }else if (tessellationType == 2){
-        voro::wall_sphere sph(0, 0, 0, min(dimensions.x, dimensions.y) );
-        con.add_wall(sph);
-    }else if (tessellationType == 3){
-        voro::wall_cone cone(0,0,min(dimensions.x, dimensions.y),0,0,-1,atan(0.5));
-        con.add_wall(cone);
+    for(int i = 0; i < genome->chromosome.size(); i++){
+        addCellSeed(con, genome->chromosome.at(i), i, true);
     }
-    
-    
-    for(int i = 0; i < genome.chromosome.size(); i++){
-        addCellSeed(con, genome.chromosome.at(i), i, true);
-    }
-    
     
     cellMeshes = getCellsFromContainer(con,0.0);
     cellMeshWireframes = getCellsFromContainer(con,0.0,true);
     cellRadius = getCellsRadius(con);
     cellCentroids = getCellsCentroids(con);
+}
+
+double Voronoi::calculateFitness(Genome* genome){
+    createPhenotype(genome);
+    
+    double sum = 0;
+    for(auto & radius : cellRadius){
+        sum+=radius;
+    }
+    
+    return sum/cellRadius.size();
 }
