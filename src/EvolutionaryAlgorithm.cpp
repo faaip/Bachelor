@@ -15,16 +15,12 @@ EvolutionaryAlgorithm::EvolutionaryAlgorithm(Voronoi* voronoi){
 
 void EvolutionaryAlgorithm::initializePopulation(){
     // Initializes the population with random genomes
-    
-
-    
     population.clear();
     for(int i = 0; i<populationSize; i++ ){
         Genome genome = Genome(genomeSize,dimensions);
         genome.randomizeChromosome();
         population.push_back(genome);
     }
-    cout << "Initialising population with population size: " << population.size() << endl;
 }
 
 void EvolutionaryAlgorithm::startEvolution(){
@@ -34,6 +30,7 @@ void EvolutionaryAlgorithm::startEvolution(){
     // Initialisaasi
     initializePopulation();
     // Evaluate
+    evaluatePopulation();
 }
 
 void EvolutionaryAlgorithm::evaluatePopulation(){

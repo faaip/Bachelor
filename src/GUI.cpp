@@ -90,7 +90,7 @@ void GUI::setupRunGUI(){
     guiStart->setEnabled(false);
     
     guiRun = new ofxDatGui( ofxDatGuiAnchor::TOP_LEFT );
-    guiRun->addHeader(" ::: Evolutionary Voronoi Tessellation :::"); // Header
+    guiRun->addHeader(ofToString(fitnessFunctionChoices[evolutionaryAlgorithm->fitnessType])); // Header
     
     renderFolder = guiRun->addFolder("Rendering");
     renderingToggle = renderFolder->addToggle("Show rendering",voronoi->isRendering);

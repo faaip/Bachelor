@@ -90,37 +90,85 @@ voro::container Voronoi::createPhenotype(Genome* genome){
     cellRadius = getCellsRadius(con);
     cellCentroids = getCellsCentroids(con);
     
+
+    
     return con;
 }
 
 double Voronoi::calculateFitness(Genome* genome, int fitnessType){
     if(fitnessType == 0){
-        // Evenly sized radius for cells
-        createPhenotype(genome);
-        double sum = 0;
-        for(auto & radius : cellRadius){
-            sum+=radius;
-        }
-        return sum/cellRadius.size();
-    }else if (fitnessType == 1){
-        // Depth difference on z-axis
+        // dist to middle divied by number of faces
         voro::container con = createPhenotype(genome); // copy of container
         voro::c_loop_all cl(con); // Looping all cells
         voro::voronoicell_neighbor cellNeighbor; // auxilliary class for finding cell neighbors
-        vector<int> neighborIds; // id's of all cell neighbors
-        double x,y,z; // coordinates for current cell
+        double x,y,z;
         double fitness = 0; // fitness to return
-        
         if(cl.start()) do if(con.compute_cell(cellNeighbor,cl)) { // Loop through all cells in container
-            cl.pos(x,y,z); // position of cell currently being considered
-            int id = cl.pid(); // Id of cell currently considered
-            cellNeighbor.neighbors(neighborIds); // Adds neighbors to vector
-            for(int i = 0; i< cellCentroids.size();i++){
-            fitness +=  std::abs(cellCentroids.at(i).z+cellCentroids.at(id).z); // return distance on z-axis
-            }
+            cl.pos(x,y,z);
+            fitness += cellNeighbor.number_of_faces()/ofDist(0, 0, 0, x, y, z);
         }while (cl.inc());{}
-        return fitness;
+        return fitness/genome->chromosome.size();
     }
-    
+    else if (fitnessType == 1){
+        // total edge length
+        voro::container con = createPhenotype(genome);
+        voro::c_loop_all cl(con);
+        voro::voronoicell_neighbor cellNeighbor;
+        vector<int> neighborIds;
+        double x,y,z;
+        double fitness = 0;
+        if(cl.start()) do if(con.compute_cell(cellNeighbor,cl)) {
+            cl.pos(x,y,z);
+            int id = cl.pid();
+            cellNeighbor.neighbors(neighborIds);
+            fitness += cellNeighbor.total_edge_distance();
+        }while (cl.inc());{}
+        return fitness/genome->chromosome.size();
+    }
+    else if(fitnessType == 2){
+        // Faces * dist to middle
+        voro::container con = createPhenotype(genome);
+        voro::c_loop_all cl(con);
+        voro::voronoicell_neighbor cellNeighbor;
+        vector<int> neighborIds;
+        double x,y,z;
+        double fitness = 0;
+        if(cl.start()) do if(con.compute_cell(cellNeighbor,cl)) {
+            cl.pos(x,y,z);
+            int id = cl.pid();
+            cellNeighbor.neighbors(neighborIds);
+            fitness += cellNeighbor.number_of_faces()*(ofDist(0, 0, 0, x, y, z)/100);
+        }while (cl.inc());{}
+        return (fitness/genome->chromosome.size());
+    }
+    else if(fitnessType == 3){
+        // Faces * edge length
+        voro::container con = createPhenotype(genome);
+        voro::c_loop_all cl(con);
+        voro::voronoicell_neighbor cellNeighbor;
+        vector<int> neighborIds;
+        double x,y,z;
+        double fitness = 0;
+        if(cl.start()) do if(con.compute_cell(cellNeighbor,cl)) {
+            cl.pos(x,y,z);
+            int id = cl.pid();
+            cellNeighbor.neighbors(neighborIds);
+            fitness += (cellNeighbor.number_of_faces()*2)*cellNeighbor.total_edge_distance();
+        }while (cl.inc());{}
+        return (fitness/genome->chromosome.size());
+    }
+    else if(fitnessType == 4){
+        // Faces
+        voro::container con = createPhenotype(genome);
+        voro::c_loop_all cl(con);
+        voro::voronoicell_neighbor cellNeighbor;
+        vector<int> neighborIds;
+        double x,y,z;
+        double fitness = 0;
+        if(cl.start()) do if(con.compute_cell(cellNeighbor,cl)) {
+            fitness += cellNeighbor.number_of_faces();
+        }while (cl.inc());{}
+        return (fitness/genome->chromosome.size());
+    }
 }
 

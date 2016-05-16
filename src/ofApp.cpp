@@ -41,7 +41,15 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
- 
+    if(key == 357 && index > 0){
+        index--;
+    }
+    
+    if(key == 359 && index < evolutionaryAlgorithm.populationSize-1){
+        index++;
+    }
+    
+    voronoi.createPhenotype(&evolutionaryAlgorithm.population.at(index));
 }
 
 //--------------------------------------------------------------

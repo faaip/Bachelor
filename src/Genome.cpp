@@ -81,7 +81,7 @@ Genome Genome::uniformCrossover(Genome* otherParent){
             child.chromosome.push_back(otherParent->chromosome.at(i));
         }
     }
-   
+    
     return child;
     
 }
@@ -89,13 +89,19 @@ Genome Genome::uniformCrossover(Genome* otherParent){
 void Genome::mutate(float mutationRate){
     for(auto & p : this->chromosome){
         if(ofRandom(1)<mutationRate){
-            p.x =ofRandom(-dimensions.x,dimensions.x);
-        }
-        if(ofRandom(1)<mutationRate){
-            p.y =ofRandom(-dimensions.y,dimensions.y);
-        }
-        if(ofRandom(1)<mutationRate){
-            p.z =ofRandom(-dimensions.z,dimensions.z);
+            int r = (int) ofRandom(4);
+            
+            switch(r){
+                case 0:
+                    p.x =ofRandom(-dimensions.x,dimensions.x);
+                    break;
+                case 1:
+                    p.y =ofRandom(-dimensions.y,dimensions.y);
+                    break;
+                case 2:
+                    p.z =ofRandom(-dimensions.z,dimensions.z);
+                    break;
+            }
         }
     }
 }

@@ -25,6 +25,9 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
+    int index = 0;
+
+    
     GUI gui = GUI();
     Voronoi voronoi = Voronoi();
     EvolutionaryAlgorithm evolutionaryAlgorithm = EvolutionaryAlgorithm(&voronoi);
