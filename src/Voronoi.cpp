@@ -170,5 +170,33 @@ double Voronoi::calculateFitness(Genome* genome, int fitnessType){
         }while (cl.inc());{}
         return (fitness/genome->chromosome.size());
     }
+    else if(fitnessType == 5){
+        // Get away to the smallest.
+        voro::container con = createPhenotype(genome);
+        voro::c_loop_all cl(con);
+        voro::voronoicell_neighbor cellNeighbor;
+        vector<int> neighborIds;
+        double x,y,z;
+        double xSmall, ySmall, zSmall;
+        int sizeOfSmallest = INT_MAX;
+        double fitness = 0;
+        if(cl.start()) do if(con.compute_cell(cellNeighbor,cl)) {
+            double s = cellNeighbor.surface_area();
+            if(sizeOfSmallest > s){
+                cl.pos(xSmall, ySmall,zSmall);
+                sizeOfSmallest = s;
+            }
+        }while (cl.inc());{}
+        
+        if(cl.start()) do if(con.compute_cell(cellNeighbor,cl)) {
+            cl.pos(x, y, z);
+            fitness += ofDist(x, y, z, xSmall, ySmall, zSmall);
+            
+        }while (cl.inc());{}
+        
+        
+        
+        return (fitness/genome->chromosome.size());
+    }
 }
 
