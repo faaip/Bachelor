@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include "ofMain.h"
 #include "Genome.hpp"
+#include "ofxCsv.h"
 #include "Defines.h"
 #include "Voronoi.hpp"
 
@@ -46,6 +47,9 @@ public:
     
     // Dimensions
     ofVec3f dimensions = ofVec3f(615,820,15);
+    
+    //CSV
+    ofxCsv csv;
 };
 
 #endif /* EvolutionaryAlgorithm_hpp */

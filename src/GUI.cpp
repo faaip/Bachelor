@@ -115,8 +115,10 @@ void GUI::setupRunGUI(){
     guiRun->addFRM();
     pauseButton = guiRun->addButton("Pause evolution");
     resetButton = guiRun->addButton(">>> RESET <<<");
+    exportToCsvButton->setStripeColor(ofColor::blueSteel);
     
     exportToCsvButton = guiRun->addButton("Export to CSV");
+    exportToCsvButton->setStripeColor(ofColor::darkRed);
     
     // Add event listeners
     renderingToggle->onButtonEvent(this,&GUI::onButtonEvent);

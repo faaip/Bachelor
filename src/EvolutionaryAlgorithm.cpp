@@ -153,7 +153,35 @@ float EvolutionaryAlgorithm::getAverageFitness(){
 }
 
 void EvolutionaryAlgorithm::exportToCsv(){
-    for(auto& num : bestFitnessVector){
-        cout << num << endl;
+    csv.createFile("createfile.csv");
+    
+    ofxCsvRow infoRow;
+    infoRow.setString(0, "Population size: " + ofToString(populationSize));
+    infoRow.setString(1, "Dimensions size: " + ofToString(dimensions.x) + " " + ofToString(dimensions.y) + " "+ ofToString(dimensions.z));
+    infoRow.setString(2, "Genome size: " + ofToString(genomeSize));
+    infoRow.setString(3, "Fitness type: " + ofToString(fitnessType));
+    infoRow.setString(4, "Crossover %: " + ofToString(crossoverProbability*100));
+    infoRow.setString(5, "Crossover type: " + ofToString(crossoverType));
+    infoRow.setString(6, "Mutation rate: " + ofToString(mutationRate));
+    infoRow.setString(6, "Mutation probability: " + ofToString(mutationProbability*100));
+    csv.addRow(infoRow);
+    
+    ofxCsvRow emptyRow;
+    csv.addRow(emptyRow);
+    
+    ofxCsvRow moreInfoRow;
+    moreInfoRow.setString(0, "Avg fitness:");
+    moreInfoRow.setString(1, "Best fitness:");
+    csv.addRow(moreInfoRow);
+    
+    // Add avg and best fitness
+    for(int i = 0; i < generationCount; i++){
+        ofxCsvRow row;
+        row.insertFloat(0, avgFitnessVector.at(i));
+        row.insertFloat(1, bestFitnessVector.at(i));
+        csv.addRow(row);
     }
+    
+    csv.save(ofToString(ofToString((int) ofRandom(10000)) + "_savefile.csv"));
+    cout << "Exported to csv" << endl;
 }

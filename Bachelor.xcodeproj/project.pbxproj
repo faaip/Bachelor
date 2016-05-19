@@ -11,6 +11,8 @@
 		BB0329561CBE93D700287F29 /* GUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB0329541CBE93D700287F29 /* GUI.cpp */; };
 		BB03295A1CBE96F100287F29 /* Genome.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB0329581CBE96F100287F29 /* Genome.cpp */; };
 		BB03295D1CBE970E00287F29 /* EvolutionaryAlgorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB03295B1CBE970E00287F29 /* EvolutionaryAlgorithm.cpp */; };
+		BB2254981CEDA98F008E289B /* ofxCsv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB2254941CEDA98F008E289B /* ofxCsv.cpp */; };
+		BB2254991CEDA98F008E289B /* ofxCsvRow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB2254961CEDA98F008E289B /* ofxCsvRow.cpp */; };
 		BB723D3B1CBEE0A800FEFE9E /* Voronoi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB723D391CBEE0A800FEFE9E /* Voronoi.cpp */; };
 		BB723D5A1CBEE1F000FEFE9E /* ofxVoro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB723D3E1CBEE1F000FEFE9E /* ofxVoro.cpp */; };
 		BB723D5B1CBEE1F000FEFE9E /* c_loops.cc in Sources */ = {isa = PBXBuildFile; fileRef = BB723D421CBEE1F000FEFE9E /* c_loops.cc */; };
@@ -81,6 +83,10 @@
 		BB0329591CBE96F100287F29 /* Genome.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Genome.hpp; sourceTree = "<group>"; };
 		BB03295B1CBE970E00287F29 /* EvolutionaryAlgorithm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EvolutionaryAlgorithm.cpp; sourceTree = "<group>"; };
 		BB03295C1CBE970E00287F29 /* EvolutionaryAlgorithm.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EvolutionaryAlgorithm.hpp; sourceTree = "<group>"; };
+		BB2254941CEDA98F008E289B /* ofxCsv.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCsv.cpp; sourceTree = "<group>"; };
+		BB2254951CEDA98F008E289B /* ofxCsv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxCsv.h; sourceTree = "<group>"; };
+		BB2254961CEDA98F008E289B /* ofxCsvRow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCsvRow.cpp; sourceTree = "<group>"; };
+		BB2254971CEDA98F008E289B /* ofxCsvRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxCsvRow.h; sourceTree = "<group>"; };
 		BB3B27201CC129980058B381 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		BB723D391CBEE0A800FEFE9E /* Voronoi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Voronoi.cpp; sourceTree = "<group>"; };
 		BB723D3A1CBEE0A800FEFE9E /* Voronoi.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Voronoi.hpp; sourceTree = "<group>"; };
@@ -206,11 +212,32 @@
 			name = components;
 			sourceTree = "<group>";
 		};
+		BB2254921CEDA98F008E289B /* ofxCsv */ = {
+			isa = PBXGroup;
+			children = (
+				BB2254931CEDA98F008E289B /* src */,
+			);
+			name = ofxCsv;
+			sourceTree = "<group>";
+		};
+		BB2254931CEDA98F008E289B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				BB2254941CEDA98F008E289B /* ofxCsv.cpp */,
+				BB2254951CEDA98F008E289B /* ofxCsv.h */,
+				BB2254961CEDA98F008E289B /* ofxCsvRow.cpp */,
+				BB2254971CEDA98F008E289B /* ofxCsvRow.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxCsv/src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
 				D8DD1043C333F6F63C8685E6 /* ofxDatGui */,
 				BB723D3C1CBEE1F000FEFE9E /* ofxVoro */,
+				BB2254921CEDA98F008E289B /* ofxCsv */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -432,6 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB723D5B1CBEE1F000FEFE9E /* c_loops.cc in Sources */,
+				BB2254991CEDA98F008E289B /* ofxCsvRow.cpp in Sources */,
 				BB723D611CBEE1F000FEFE9E /* unitcell.cc in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
@@ -446,6 +474,7 @@
 				BB0329561CBE93D700287F29 /* GUI.cpp in Sources */,
 				9CF4130A7E6DA19A3DC42B9A /* ofxSmartFont.cpp in Sources */,
 				BB723D631CBEE1F000FEFE9E /* v_compute.cc in Sources */,
+				BB2254981CEDA98F008E289B /* ofxCsv.cpp in Sources */,
 				BB723D621CBEE1F000FEFE9E /* v_base.cc in Sources */,
 				C9466C434D1CF8AB968D298D /* ofxDatGui.cpp in Sources */,
 				BB723D601CBEE1F000FEFE9E /* pre_container.cc in Sources */,
