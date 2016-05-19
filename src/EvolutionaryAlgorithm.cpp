@@ -172,6 +172,7 @@ void EvolutionaryAlgorithm::exportToCsv(){
     ofxCsvRow moreInfoRow;
     moreInfoRow.setString(0, "Avg fitness:");
     moreInfoRow.setString(1, "Best fitness:");
+    moreInfoRow.setString(2, "Generation number:");
     csv.addRow(moreInfoRow);
     
     // Add avg and best fitness
@@ -179,6 +180,7 @@ void EvolutionaryAlgorithm::exportToCsv(){
         ofxCsvRow row;
         row.insertFloat(0, avgFitnessVector.at(i));
         row.insertFloat(1, bestFitnessVector.at(i));
+        row.insertInt(2,i+1);
         csv.addRow(row);
     }
     
