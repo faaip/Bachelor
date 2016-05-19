@@ -193,9 +193,6 @@ double Voronoi::calculateFitness(Genome* genome, int fitnessType){
             fitness += ofDist(x, y, z, xSmall, ySmall, zSmall);
             
         }while (cl.inc());{}
-        
-        
-        
         return (fitness/genome->chromosome.size());
     }
 }

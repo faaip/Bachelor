@@ -174,9 +174,9 @@ void EvolutionaryAlgorithm::exportToCsv(){
     // Add avg and best fitness
     for(int i = 0; i < generationCount; i++){
         ofxCsvRow row;
-        row.insertFloat(0, avgFitnessVector.at(i));
-        row.insertFloat(1, bestFitnessVector.at(i));
-        row.insertInt(2,i+1);
+        row.insertInt(0,i+1);
+        row.insertFloat(1, avgFitnessVector.at(i));
+        row.insertFloat(2, bestFitnessVector.at(i));
         csv.addRow(row);
     }
     
