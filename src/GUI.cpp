@@ -75,9 +75,9 @@ void GUI::setupStartGUI(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlg
     mutationRate->onSliderEvent(this, &GUI::onSliderEvent);
     mutationProbability->onSliderEvent(this, &GUI::onSliderEvent);
     startButton->onButtonEvent(this, &GUI::onButtonEvent);
-    widthConstraintToggle->onButtonEvent(this, &GUI::onButtonEvent);
-    heightConstraintToggle->onButtonEvent(this, &GUI::onButtonEvent);
-    depthConstraintToggle->onButtonEvent(this, &GUI::onButtonEvent);
+    widthConstraintToggle->onToggleEvent(this, &GUI::onToggleEvent);
+    heightConstraintToggle->onToggleEvent(this, &GUI::onToggleEvent);
+    depthConstraintToggle->onToggleEvent(this, &GUI::onToggleEvent);
     widthSlider->onSliderEvent(this, &GUI::onSliderEvent);
     heightSlider->onSliderEvent(this, &GUI::onSliderEvent);
     depthSlider->onSliderEvent(this, &GUI::onSliderEvent);
@@ -120,13 +120,12 @@ void GUI::setupRunGUI(){
     exportToCsvButton->setStripeColor(ofColor::darkRed);
     
     // Add event listeners
-    renderingToggle->onButtonEvent(this,&GUI::onButtonEvent);
-    showCenterPointsToggle->onButtonEvent(this, &GUI::onButtonEvent);
-    showTessellationMeshToggle->onButtonEvent(this, &GUI::onButtonEvent);
-    
     pauseButton->onButtonEvent(this, &GUI::onButtonEvent);
     resetButton->onButtonEvent(this, &GUI::onButtonEvent);
     exportToCsvButton->onButtonEvent(this, &GUI::onButtonEvent);
+    renderingToggle->onToggleEvent(this, &GUI::onToggleEvent);
+    showCenterPointsToggle->onToggleEvent(this, &GUI::onToggleEvent);
+    showTessellationMeshToggle->onToggleEvent(this, &GUI::onToggleEvent);
     
     guiRun->addFooter(); // Footer for collapsing
     
@@ -155,30 +154,6 @@ void GUI::onButtonEvent(ofxDatGuiButtonEvent e){
         
     }
     
-    if(e.target == showCenterPointsToggle){
-        voronoi->isShowingPoints = showCenterPointsToggle->getEnabled();
-    }
-    
-    if(e.target == showTessellationMeshToggle){
-        voronoi->isShowingMesh = showTessellationMeshToggle->getEnabled();
-    }
-    
-    if(e.target == renderingToggle){
-        voronoi->isShowingMesh = renderingToggle->getEnabled();
-    }
-    
-    if(e.target == widthConstraintToggle){
-        voronoi->widthConstraint = !widthConstraintToggle->getEnabled();
-    }
-    
-    if(e.target == heightConstraintToggle){
-        voronoi->heightConstraint = !heightConstraintToggle->getEnabled();
-    }
-    
-    if(e.target == depthConstraintToggle){
-        voronoi->depthConstraint = !depthConstraintToggle->getEnabled();
-    }
-    
     if(e.target == pauseButton){
         if(evolutionaryAlgorithm->evolutionRunning){
             evolutionaryAlgorithm->evolutionRunning = false;
@@ -192,6 +167,33 @@ void GUI::onButtonEvent(ofxDatGuiButtonEvent e){
     if(e.target == exportToCsvButton){
         evolutionaryAlgorithm->exportToCsv();
     }
+}
+
+void GUI::onToggleEvent(ofxDatGuiToggleEvent e){
+    if(e.target == showCenterPointsToggle){
+        voronoi->isShowingPoints = showCenterPointsToggle->getChecked();
+    }
+    
+    if(e.target == showTessellationMeshToggle){
+        voronoi->isShowingMesh = showTessellationMeshToggle->getChecked();
+    }
+    
+    if(e.target == renderingToggle){
+        voronoi->isShowingMesh = renderingToggle->getChecked();
+    }
+    
+    if(e.target == widthConstraintToggle){
+        voronoi->widthConstraint = !widthConstraintToggle->getChecked();
+    }
+    
+    if(e.target == heightConstraintToggle){
+        voronoi->heightConstraint = !heightConstraintToggle->getChecked();
+    }
+    
+    if(e.target == depthConstraintToggle){
+        voronoi->depthConstraint = !depthConstraintToggle->getChecked();
+    }
+    
 }
 
 void GUI::onDropdownEvent(ofxDatGuiDropdownEvent e){
