@@ -159,7 +159,7 @@ void EvolutionaryAlgorithm::exportToCsv(){
     infoRow.setString(4, "Crossover %: " + ofToString(crossoverProbability*100));
     infoRow.setString(5, "Crossover type: " + ofToString(crossoverType));
     infoRow.setString(6, "Mutation rate: " + ofToString(mutationRate));
-    infoRow.setString(6, "Mutation probability: " + ofToString(mutationProbability*100));
+    infoRow.setString(7, "Mutation probability: " + ofToString(mutationProbability*100));
     csv.addRow(infoRow);
     
     ofxCsvRow emptyRow;
