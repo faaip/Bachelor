@@ -27,11 +27,13 @@ void ofApp::draw(){
     }
     voronoi.draw();
     
-    // Update GUI
+    // Update GUI & CSV
     if(evolutionaryAlgorithm.evolutionRunning){
         gui.currentGenerationNumberLabel->setLabel("Current generation: " + ofToString(evolutionaryAlgorithm.generationCount));
         gui.bestFitnessLabel->setLabel("Best fitness: " + ofToString(evolutionaryAlgorithm.population.front().fitness));
         gui.avgFitnessLabel->setLabel("Average fitness: " + ofToString(evolutionaryAlgorithm.getAverageFitness()));
+        evolutionaryAlgorithm.bestFitnessVector.push_back(evolutionaryAlgorithm.population.front().fitness);
+        evolutionaryAlgorithm.avgFitnessVector.push_back(evolutionaryAlgorithm.getAverageFitness());
     }
     if(evolutionaryAlgorithm.evolutionStarted){
     gui.updateGraph(evolutionaryAlgorithm.getAverageFitness(),evolutionaryAlgorithm.population.front().fitness);

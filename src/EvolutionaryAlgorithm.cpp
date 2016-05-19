@@ -51,11 +51,7 @@ void EvolutionaryAlgorithm::produceNextGeneration(){
     
     // Sort according to fitness
     std::sort(population.begin(),population.end());
-    
-    // Save best and average fitness for exporting to csv
-    bestFitnessVector.push_back(population.front().fitness);
-    avgFitnessVector.push_back(getAverageFitness());
-    
+        
     // Producing the next generation
     // Elite first
     for(int i = 0; i < eliteCount; i++){
