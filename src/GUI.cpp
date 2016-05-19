@@ -208,7 +208,6 @@ void GUI::onDropdownEvent(ofxDatGuiDropdownEvent e){
     
 }
 
-
 void GUI::updateGraph(float average, float max){
     if(evolutionaryAlgorithm->evolutionStarted){
         if(evolutionaryAlgorithm->evolutionRunning){
