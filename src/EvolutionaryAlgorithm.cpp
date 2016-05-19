@@ -38,9 +38,6 @@ void EvolutionaryAlgorithm::evaluatePopulation(){
     for (vector<Genome>::iterator g= population.begin(); g!=population.end(); g++){
         calculateFitness(&(*g));
     }
-    
-    // Sort according to fitness
-    std::sort(population.begin(),population.end());
 }
 
 
@@ -50,12 +47,14 @@ void EvolutionaryAlgorithm::produceNextGeneration(){
     // Kilde om forskellige selektioner: http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.140.3747
     
     vector<Genome> newPopulation;
-    
-    
     evaluatePopulation();
     
     // Sort according to fitness
     std::sort(population.begin(),population.end());
+    
+    // Save best and average fitness for exporting to csv
+    bestFitnessVector.push_back(population.front().fitness);
+    avgFitnessVector.push_back(getAverageFitness());
     
     // Producing the next generation
     // Elite first
@@ -140,7 +139,6 @@ void EvolutionaryAlgorithm::produceNextGeneration(){
 void EvolutionaryAlgorithm::calculateFitness(Genome* g){
     // Reset fitness
     g->fitness = 0;
-    
     g->fitness = voronoi->calculateFitness(g,fitnessType);
 }
 
@@ -152,4 +150,10 @@ float EvolutionaryAlgorithm::getAverageFitness(){
     }
     
     return sum/population.size();
+}
+
+void EvolutionaryAlgorithm::exportToCsv(){
+    for(auto& num : bestFitnessVector){
+        cout << num << endl;
+    }
 }

@@ -105,7 +105,7 @@ double Voronoi::calculateFitness(Genome* genome, int fitnessType){
         double fitness = 0; // fitness to return
         if(cl.start()) do if(con.compute_cell(cellNeighbor,cl)) { // Loop through all cells in container
             cl.pos(x,y,z);
-            fitness += cellNeighbor.number_of_faces()/ofDist(0, 0, 0, x, y, z);
+            fitness += (cellNeighbor.number_of_faces()/ofDist(0, 0, 0, x, y, z))*10;
         }while (cl.inc());{}
         return fitness/genome->chromosome.size();
     }

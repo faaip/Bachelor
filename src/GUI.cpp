@@ -7,7 +7,6 @@
 #include "GUI.hpp"
 
 GUI::GUI(){
-    
 }
 
 void GUI::setupStartGUI(Voronoi* voronoi, EvolutionaryAlgorithm* evolutionaryAlgorithm){
@@ -117,6 +116,8 @@ void GUI::setupRunGUI(){
     pauseButton = guiRun->addButton("Pause evolution");
     resetButton = guiRun->addButton(">>> RESET <<<");
     
+    exportToCsvButton = guiRun->addButton("Export to CSV");
+    
     // Add event listeners
     renderingToggle->onButtonEvent(this,&GUI::onButtonEvent);
     showCenterPointsToggle->onButtonEvent(this, &GUI::onButtonEvent);
@@ -124,6 +125,7 @@ void GUI::setupRunGUI(){
     
     pauseButton->onButtonEvent(this, &GUI::onButtonEvent);
     resetButton->onButtonEvent(this, &GUI::onButtonEvent);
+    exportToCsvButton->onButtonEvent(this, &GUI::onButtonEvent);
     
     guiRun->addFooter(); // Footer for collapsing
     
@@ -176,7 +178,6 @@ void GUI::onButtonEvent(ofxDatGuiButtonEvent e){
         voronoi->depthConstraint = !depthConstraintToggle->getEnabled();
     }
     
-    
     if(e.target == pauseButton){
         if(evolutionaryAlgorithm->evolutionRunning){
             evolutionaryAlgorithm->evolutionRunning = false;
@@ -185,6 +186,10 @@ void GUI::onButtonEvent(ofxDatGuiButtonEvent e){
             evolutionaryAlgorithm->evolutionRunning = true;
             pauseButton->setLabel("Pause evolution");
         }
+    }
+    
+    if(e.target == exportToCsvButton){
+        evolutionaryAlgorithm->exportToCsv();
     }
 }
 

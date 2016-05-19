@@ -25,8 +25,7 @@ public:
     bool hasHigherFitness(Genome x, Genome y);
     bool evolutionRunning = false;
     bool evolutionStarted = false;
-    void setCrossoverType(int t);
-    void setMutationType(int t);
+    void exportToCsv();
     
     // Variables
     int populationSize = 30;
@@ -42,6 +41,8 @@ public:
     int crossoverType = 0;
     float mutationProbability = 0.05;
     Voronoi* voronoi;
+    vector<double> bestFitnessVector;
+    vector<double> avgFitnessVector;
     
     // Dimensions
     ofVec3f dimensions = ofVec3f(615,820,15);

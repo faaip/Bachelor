@@ -8,13 +8,13 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     if(evolutionaryAlgorithm.evolutionRunning){
-      
-        
         if(evolutionaryAlgorithm.generationCount < 5000000)
         {
             evolutionaryAlgorithm.produceNextGeneration();
             evolutionaryAlgorithm.generationCount++;
+            
         }
+        
     }
 }
 
