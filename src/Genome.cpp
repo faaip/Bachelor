@@ -30,7 +30,7 @@ Genome Genome::singlePointCrossover(Genome* otherParent){
     int r = ofRandom(0,genomeSize); // random single point
     
     for(int i = 0; i < r; i++){
-        child.chromosome.push_back(chromosome.at(i)); // from mother
+        child.chromosome.push_back(this->chromosome.at(i)); // from "mother"
     }
     
     for(int i = r; i < genomeSize; i++){
@@ -89,8 +89,7 @@ Genome Genome::uniformCrossover(Genome* otherParent){
 void Genome::mutate(float mutationRate){
     for(auto & p : this->chromosome){
         if(ofRandom(1)<mutationRate){
-            int r = (int) ofRandom(4);
-            
+            int r = (int) ofRandom(4); // Cast to int, so it rounds down to 3
             switch(r){
                 case 0:
                     p.x =ofRandom(-dimensions.x,dimensions.x);

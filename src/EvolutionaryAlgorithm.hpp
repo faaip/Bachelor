@@ -17,13 +17,11 @@
 class EvolutionaryAlgorithm{
 public:
     // Methods
-    EvolutionaryAlgorithm(Voronoi* voroni);
+    EvolutionaryAlgorithm(Voronoi* voronoi);
     void initializePopulation();
     void evaluatePopulation();
     void produceNextGeneration();
-    void calculateFitness(Genome* g);
     void startEvolution();
-    bool hasHigherFitness(Genome x, Genome y);
     bool evolutionRunning = false;
     bool evolutionStarted = false;
     void exportToCsv();

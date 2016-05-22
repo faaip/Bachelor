@@ -14,10 +14,7 @@ void ofApp::update(){
             evolutionaryAlgorithm.generationCount++;
             
         }
-        
     }
-    
-    
 }
 
 
@@ -41,9 +38,9 @@ void ofApp::draw(){
     gui.updateGraph(evolutionaryAlgorithm.getAverageFitness(),evolutionaryAlgorithm.population.front().fitness);
     }
     
-//    if(evolutionaryAlgorithm.generationCount == 10 || evolutionaryAlgorithm.generationCount == 100 || evolutionaryAlgorithm.generationCount == 1000){
-//        evolutionaryAlgorithm.evolutionRunning = false;
-//    }
+    if(evolutionaryAlgorithm.generationCount == 10 || evolutionaryAlgorithm.generationCount == 100 || evolutionaryAlgorithm.generationCount == 1000){
+        evolutionaryAlgorithm.evolutionRunning = false;
+    }
 }
 
 

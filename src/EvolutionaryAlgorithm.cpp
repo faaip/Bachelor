@@ -30,31 +30,27 @@ void EvolutionaryAlgorithm::startEvolution(){
     evolutionRunning = true;
     evolutionStarted = true;
     
-    // Initialisaasi
     initializePopulation();
-    // Evaluate
     evaluatePopulation();
 }
 
 void EvolutionaryAlgorithm::evaluatePopulation(){
     // Evaluates each genome at sets fitness accordingly
-    for (vector<Genome>::iterator g= population.begin(); g!=population.end(); g++){
-        calculateFitness(&(*g));
+    for(auto & g : population){
+        g.fitness = 0; // Reset fitness
+        g.fitness = voronoi->calculateFitness(&g,fitnessType);
+
     }
 }
 
 
 void EvolutionaryAlgorithm::produceNextGeneration(){
-    // http://geneticalgorithms.ai-depot.com/Tutorial/Overview.html - roulette wheel selection
-    // http://www.codeproject.com/Articles/707505/Genetic-Algorithms-Demystified
-    // Kilde om forskellige selektioner: http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.140.3747
-    
     vector<Genome> newPopulation;
     evaluatePopulation();
     
     // Sort according to fitness
     std::sort(population.begin(),population.end());
-        
+    
     // Producing the next generation
     // Elite first
     for(int i = 0; i < eliteCount; i++){
@@ -133,12 +129,6 @@ void EvolutionaryAlgorithm::produceNextGeneration(){
     }
     
     population = newPopulation;
-}
-
-void EvolutionaryAlgorithm::calculateFitness(Genome* g){
-    // Reset fitness
-    g->fitness = 0;
-    g->fitness = voronoi->calculateFitness(g,fitnessType);
 }
 
 float EvolutionaryAlgorithm::getAverageFitness(){

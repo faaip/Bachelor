@@ -17,8 +17,6 @@ public:
     // Methods
     Genome(int genomeSize, ofVec3f d);
     void randomizeChromosome();
-    Genome reproduce(Genome otherParent);
-    void mutate(float mutationRate);
     
     // Variables
     double fitness = 0;
@@ -37,6 +35,7 @@ public:
     Genome uniformCrossover(Genome* otherParent);
     
     // Mutation
+    void mutate(float mutationRate);
     
     // Dimensions size
     ofVec3f dimensions;
