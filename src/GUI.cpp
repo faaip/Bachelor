@@ -109,9 +109,6 @@ void GUI::setupRunGUI(){
     avgFitnessLabel = guiRun->addLabel("Average fitness: ");
     currentGenerationNumberLabel = guiRun->addLabel("Current generation: ");
     
-    averageValuePlotter = guiRun->addValuePlotter("Average fitness", 0, 1000);
-    averageValuePlotter->setDrawMode(ofxDatGuiGraph::LINES);
-    
     guiRun->addFRM();
     pauseButton = guiRun->addButton("Pause evolution");
     resetButton = guiRun->addButton(">>> RESET <<<");
@@ -206,19 +203,6 @@ void GUI::onDropdownEvent(ofxDatGuiDropdownEvent e){
         evolutionaryAlgorithm->fitnessType = e.child;
     }
     
-}
-
-void GUI::updateGraph(float average, float max){
-    if(evolutionaryAlgorithm->evolutionStarted){
-        if(evolutionaryAlgorithm->evolutionRunning){
-            averageValuePlotter->setSpeed(1);
-            averageValuePlotter->setRange(0,max);
-            averageValuePlotter->setLabel("Average fitness: \nrange 0 to " + ofToString(max));
-            averageValuePlotter->setValue(average);
-        }else{
-            averageValuePlotter->setSpeed(0);
-        }
-    }
 }
 
 void GUI::onSliderEvent(ofxDatGuiSliderEvent e){

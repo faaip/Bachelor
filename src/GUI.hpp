@@ -69,7 +69,6 @@ public:
     ofxDatGuiLabel* avgFitnessLabel;
     ofxDatGuiLabel* currentGenerationNumberLabel;
     ofxDatGuiButton* pauseButton;
-    ofxDatGuiValuePlotter* averageValuePlotter;
     ofxDatGuiFolder* renderFolder;
     ofxDatGuiToggle* renderingToggle;
     ofxDatGuiToggle* showCenterPointsToggle;

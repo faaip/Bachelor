@@ -34,13 +34,10 @@ void ofApp::draw(){
         evolutionaryAlgorithm.bestFitnessVector.push_back(evolutionaryAlgorithm.population.front().fitness);
         evolutionaryAlgorithm.avgFitnessVector.push_back(evolutionaryAlgorithm.getAverageFitness());
     }
-    if(evolutionaryAlgorithm.evolutionStarted){
-    gui.updateGraph(evolutionaryAlgorithm.getAverageFitness(),evolutionaryAlgorithm.population.front().fitness);
-    }
     
-    if(evolutionaryAlgorithm.generationCount == 10 || evolutionaryAlgorithm.generationCount == 100 || evolutionaryAlgorithm.generationCount == 1000){
-        evolutionaryAlgorithm.evolutionRunning = false;
-    }
+//    if(evolutionaryAlgorithm.generationCount == 10 || evolutionaryAlgorithm.generationCount == 100 || evolutionaryAlgorithm.generationCount == 1000){
+//        evolutionaryAlgorithm.evolutionRunning = false;
+//    }
 }
 
 
