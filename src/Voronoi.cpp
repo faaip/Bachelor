@@ -3,8 +3,6 @@
 //  Bachelor
 //
 //  Created by Frederik Tollund Juutilainen on 13/04/16.
-//
-//
 
 #include "Voronoi.hpp"
 
@@ -200,8 +198,7 @@ double Voronoi::calculateFitness(Genome* genome, int fitnessType){
         for(auto& g: genome->chromosome){
             fitness += (1/ofDist(0, 0, 0, g.x, g.y, g.z))*100;
         }
-        
-        return fitness/genome->chromosome.size();
+        return (fitness/genome->chromosome.size())*1000;
     }
 }
 

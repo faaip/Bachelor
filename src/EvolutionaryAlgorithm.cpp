@@ -24,6 +24,9 @@ void EvolutionaryAlgorithm::initializePopulation(){
 }
 
 void EvolutionaryAlgorithm::startEvolution(){
+    avgFitnessVector.clear();
+    bestFitnessVector.clear();
+    
     evolutionRunning = true;
     evolutionStarted = true;
     
@@ -149,7 +152,7 @@ float EvolutionaryAlgorithm::getAverageFitness(){
 }
 
 void EvolutionaryAlgorithm::exportToCsv(){
-    csv.createFile("createfile.csv");
+    csv.createFile(ofToString((int) ofRandom(100000)) + "_createfile.csv");
     
     ofxCsvRow infoRow;
     infoRow.setString(0, "Population size: " + ofToString(populationSize));
@@ -180,6 +183,6 @@ void EvolutionaryAlgorithm::exportToCsv(){
         csv.addRow(row);
     }
     
-    csv.save(ofToString(ofToString((int) ofRandom(10000)) + "_savefile.csv"));
+    csv.save(ofToString(ofToString((int) ofRandom(100000)) + "_savefile.csv"));
     cout << "Exported to csv" << endl;
 }
