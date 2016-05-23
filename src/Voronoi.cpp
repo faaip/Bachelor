@@ -114,34 +114,35 @@ double Voronoi::calculateFitness(Genome* genome, int fitnessType){
         voro::container con = createPhenotype(genome);
         voro::c_loop_all cl(con);
         voro::voronoicell_neighbor cellNeighbor;
-        vector<int> neighborIds;
-        double x,y,z;
         double fitness = 0;
         if(cl.start()) do if(con.compute_cell(cellNeighbor,cl)) {
-            cl.pos(x,y,z);
-            int id = cl.pid();
-            cellNeighbor.neighbors(neighborIds);
-            fitness += cellNeighbor.total_edge_distance()*2;
+            fitness += cellNeighbor.total_edge_distance();
         }while (cl.inc());{}
         return fitness/genome->chromosome.size();
     }
-    else if(fitnessType == 2){
+    else if (fitnessType == 2){
+        // short edge length
+        voro::container con = createPhenotype(genome);
+        voro::c_loop_all cl(con);
+        voro::voronoicell_neighbor cellNeighbor;
+        double fitness = 0;
+        if(cl.start()) do if(con.compute_cell(cellNeighbor,cl)) {
+            fitness += 200/cellNeighbor.total_edge_distance();
+        }while (cl.inc());{}
+        return fitness/genome->chromosome.size();
+    }
+    else if(fitnessType == 3){
         // Faces * edge length
         voro::container con = createPhenotype(genome);
         voro::c_loop_all cl(con);
         voro::voronoicell_neighbor cellNeighbor;
-        vector<int> neighborIds;
-        double x,y,z;
         double fitness = 0;
         if(cl.start()) do if(con.compute_cell(cellNeighbor,cl)) {
-            cl.pos(x,y,z);
-            int id = cl.pid();
-            cellNeighbor.neighbors(neighborIds);
-            fitness += (cellNeighbor.number_of_faces()*2)*cellNeighbor.total_edge_distance();
+            fitness += (cellNeighbor.number_of_faces())*cellNeighbor.total_edge_distance();
         }while (cl.inc());{}
         return (fitness/genome->chromosome.size());
     }
-    else if(fitnessType == 3){
+    else if(fitnessType == 4){
         // Number of faces
         voro::container con = createPhenotype(genome);
         voro::c_loop_all cl(con);
@@ -153,7 +154,7 @@ double Voronoi::calculateFitness(Genome* genome, int fitnessType){
         }while (cl.inc());{}
         return (fitness/genome->chromosome.size());
     }
-    else if(fitnessType == 4){
+    else if(fitnessType == 5){
         // Get away to the smallest.
         voro::container con = createPhenotype(genome);
         voro::c_loop_all cl(con);
@@ -163,8 +164,8 @@ double Voronoi::calculateFitness(Genome* genome, int fitnessType){
         int sizeOfSmallest = INT_MAX;
         double fitness = 0;
         if(cl.start()) do if(con.compute_cell(cellNeighbor,cl)) {
-            double s = cellNeighbor.surface_area();
-            if(sizeOfSmallest > s){
+            double s = cellNeighbor.volume();
+            if(sizeOfSmallest > s){ // Find smallest cell
                 cl.pos(xSmall, ySmall,zSmall);
                 sizeOfSmallest = s;
             }
@@ -177,7 +178,7 @@ double Voronoi::calculateFitness(Genome* genome, int fitnessType){
         }while (cl.inc());{}
         return (fitness/genome->chromosome.size());
     }
-    else if(fitnessType == 5){
+    else if(fitnessType == 6){
         // Distance to middle
         double fitness = 0;
         for(auto& g: genome->chromosome){

@@ -67,8 +67,8 @@ void EvolutionaryAlgorithm::produceNextGeneration(){
     while(newPopulation.size() < populationSize){
         int rand = ofRandom(0, totalSum);
         int partialSum = 0;
-        Genome* mother;
-        Genome* father;
+        Genome* mother = nullptr;
+        Genome* father = nullptr;
         
         // Find mother
         for (vector<Genome>::iterator g= population.begin(); g!=population.end(); g++){
@@ -90,6 +90,11 @@ void EvolutionaryAlgorithm::produceNextGeneration(){
                 break;
             }
         }
+        
+        if(!father){
+            father = &population.front();
+        }
+
         
         // http://geneticalgorithms.ai-depot.com/Tutorial/Overview.html
         // Crossover only happens x % of the time
