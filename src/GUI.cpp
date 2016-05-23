@@ -131,8 +131,9 @@ void GUI::setupRunGUI(){
 
 void GUI::onButtonEvent(ofxDatGuiButtonEvent e){
     if(e.target == startButton){
-        voronoi->dimensions = ofVec3f(widthSlider->getValue(),heightSlider->getValue(),depthSlider->getValue());
-        evolutionaryAlgorithm->dimensions = ofVec3f(widthSlider->getValue(),heightSlider->getValue(),depthSlider->getValue());
+        ofVec3f d = ofVec3f(widthSlider->getValue(),heightSlider->getValue(),depthSlider->getValue());
+        voronoi->dimensions = d;
+        evolutionaryAlgorithm->dimensions = d;
         setupRunGUI();
         evolutionaryAlgorithm->startEvolution();
     }

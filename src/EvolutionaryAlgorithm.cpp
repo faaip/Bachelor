@@ -85,7 +85,7 @@ void EvolutionaryAlgorithm::produceNextGeneration(){
         // Find father
         for (vector<Genome>::iterator g= population.begin(); g!=population.end(); g++){
             partialSum += g->fitness;
-            if(partialSum >= rand){
+            if(partialSum >= rand &&  !(mother == &(*g))){
                 father = &(*g);
                 break;
             }
