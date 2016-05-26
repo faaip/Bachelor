@@ -15,10 +15,6 @@ Voronoi::Voronoi(){
     cam.setDistance(1500);
 }
 
-void Voronoi::update(){
-    
-}
-
 void Voronoi::clear(){
     cellMeshes.clear();
     cellCentroids.clear();
@@ -154,7 +150,7 @@ double Voronoi::calculateFitness(Genome* genome, int fitnessType){
         return (fitness/genome->chromosome.size());
     }
     else if(fitnessType == 5){
-        // Get away to the smallest.
+        // Get away from the smallest.
         voro::container con = createPhenotype(genome);
         voro::c_loop_all cl(con);
         voro::voronoicell_neighbor cellNeighbor;
