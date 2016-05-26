@@ -37,9 +37,7 @@ void EvolutionaryAlgorithm::startEvolution(){
 void EvolutionaryAlgorithm::evaluatePopulation(){
     // Evaluates each genome at sets fitness accordingly
     for(auto & g : population){
-        g.fitness = 0; // Reset fitness
         g.fitness = voronoi->calculateFitness(&g,fitnessType);
-
     }
 }
 

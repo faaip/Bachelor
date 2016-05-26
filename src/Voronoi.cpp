@@ -39,7 +39,6 @@ void Voronoi::draw(){
             for (int i = 0; i < cellCentroids.size(); i++){
                 ofSetColor(0,190);
                 ofDrawSphere(cellCentroids[i], cellRadius[i]*0.15);
-                ofTrueTypeFont f;
                 ofDrawBitmapString(ofToString(cellRadius[i]), 15+cellCentroids[i].x, cellCentroids[i].y);
             }
         }
